@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 82.183 sec <<< FAILURE!
+testForgottenPassword(ru.st.selenium.ForgottenPassword)  Time elapsed: 48.226 sec  <<< FAILURE!
+org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"link text","selector":"exact:Forgotten your password?"}
+Command duration or timeout: 31.07 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.32.0', revision: '6c40c187d01409a5dc3b7f8251859150c8af0bcb', time: '2013-04-09 10:39:28'
+System info: os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_17'
+Session ID: 5542c074-f64b-468f-96d2-bfeaba48403a
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=20.0.1}]
+	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/komp/AppData/Local/Temp/anonymous1857593776601126157webdriver-profile/extensions/fxdriver@googlecode.com/components/driver_component.js:8405)
+	at <anonymous class>.fxdriver.Timer.prototype.setTimeout/<.notify(file:///C:/Users/komp/AppData/Local/Temp/anonymous1857593776601126157webdriver-profile/extensions/fxdriver@googlecode.com/components/driver_component.js:386)
+
