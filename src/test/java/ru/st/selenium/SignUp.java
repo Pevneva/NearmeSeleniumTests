@@ -15,9 +15,10 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Test
-  public void testSignUp() throws Exception {    
-  driver.manage().window().maximize();
-  driver.get("http://95.110.204.46/nearme-portal/auth/consumer/signup");
+  public void testSignUp() throws Exception {
+	
+	driver.manage().window().maximize();
+	driver.get("http://95.110.204.46/nearme-portal/auth/consumer/signup");
     driver.findElement(By.id("firstName")).clear();
     driver.findElement(By.id("firstName")).sendKeys("First01");
     driver.findElement(By.id("lastName")).clear();

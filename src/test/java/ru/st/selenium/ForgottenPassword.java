@@ -15,9 +15,10 @@ public class ForgottenPassword extends ru.st.selenium.pages.TestBase {
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Test
-  public void testForgottenPassword() throws Exception {    
-  driver.manage().window().maximize();
-  driver.get("http://95.110.204.46/nearme-portal/");
+  public void testForgottenPassword() throws Exception { 
+
+	driver.manage().window().maximize();
+  	driver.get("http://95.110.204.46/nearme-portal/");
     driver.findElement(By.linkText("Log In")).click();
     driver.findElement(By.linkText("Forgotten your password?")).click();
     driver.findElement(By.linkText("Cancel")).click();
