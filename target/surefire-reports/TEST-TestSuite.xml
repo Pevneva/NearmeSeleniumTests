@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestSuite" time="72.766" tests="2" errors="0" skipped="0" failures="1">
+<testsuite name="TestSuite" time="66.134" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="c:\Program Files\Java\jdk1.7.0_17\jre\bin"/>
@@ -59,23 +59,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testForgottenPassword" classname="ru.st.selenium.ForgottenPassword" time="48.226">
-    <failure message="Unable to locate element: {&quot;method&quot;:&quot;link text&quot;,&quot;selector&quot;:&quot;exact:Forgotten your password?&quot;}&#10;Command duration or timeout: 31.07 seconds&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: &apos;2.32.0&apos;, revision: &apos;6c40c187d01409a5dc3b7f8251859150c8af0bcb&apos;, time: &apos;2013-04-09 10:39:28&apos;&#10;System info: os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_17&apos;&#10;Session ID: 5542c074-f64b-468f-96d2-bfeaba48403a&#10;Driver info: org.openqa.selenium.firefox.FirefoxDriver&#10;Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=20.0.1}]" type="org.openqa.selenium.NoSuchElementException"><![CDATA[org.openqa.selenium.NoSuchElementException: Unable to locate element: {"method":"link text","selector":"exact:Forgotten your password?"}
-Command duration or timeout: 31.07 seconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '2.32.0', revision: '6c40c187d01409a5dc3b7f8251859150c8af0bcb', time: '2013-04-09 10:39:28'
-System info: os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.7.0_17'
-Session ID: 5542c074-f64b-468f-96d2-bfeaba48403a
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{platform=XP, databaseEnabled=true, cssSelectorsEnabled=true, javascriptEnabled=true, acceptSslCerts=true, handlesAlerts=true, browserName=firefox, browserConnectionEnabled=true, nativeEvents=true, webStorageEnabled=true, rotatable=false, locationContextEnabled=true, applicationCacheEnabled=true, takesScreenshot=true, version=20.0.1}]
-	at <anonymous class>.FirefoxDriver.prototype.findElementInternal_(file:///C:/Users/komp/AppData/Local/Temp/anonymous1857593776601126157webdriver-profile/extensions/fxdriver@googlecode.com/components/driver_component.js:8405)
-	at <anonymous class>.fxdriver.Timer.prototype.setTimeout/<.notify(file:///C:/Users/komp/AppData/Local/Temp/anonymous1857593776601126157webdriver-profile/extensions/fxdriver@googlecode.com/components/driver_component.js:386)
-]]></failure>
-    <system-out>...
-... TestNG 6.8.1 by C?dric Beust (cedric@beust.com)
-...
-
-</system-out>
-  </testcase>
-  <testcase name="testSignUp" classname="ru.st.selenium.SignUp" time="24.54"/>
+  <testcase name="testForgottenPassword" classname="ru.st.selenium.ForgottenPassword" time="39.311"/>
+  <testcase name="testSignUp" classname="ru.st.selenium.SignUp" time="26.823"/>
 </testsuite>
