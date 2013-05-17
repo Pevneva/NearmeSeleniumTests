@@ -5,11 +5,16 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.remote.ScreenshotException;
+import org.testng.*;
+import org.testng.annotations.*;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -18,6 +23,9 @@ import org.testng.annotations.BeforeClass;
 import ru.st.selenium.util.PropertyLoader;
 import ru.st.selenium.util.Browser;
 import ru.st.selenium.webdriver.WebDriverFactory;
+
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
 
 /*
  * Base class for all the test classes
@@ -28,7 +36,8 @@ import ru.st.selenium.webdriver.WebDriverFactory;
 public class TestBase {
 	private static final String SCREENSHOT_FOLDER = "target/screenshots/";
 	private static final String SCREENSHOT_FORMAT = ".png";
-
+	private boolean acceptNextAlert = true;
+	
 	protected WebDriver driver;
 
 	protected String gridHubUrl;
