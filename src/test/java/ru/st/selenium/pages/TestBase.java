@@ -37,6 +37,7 @@ public class TestBase {
 	private static final String SCREENSHOT_FOLDER = "target/screenshots/";
 	private static final String SCREENSHOT_FORMAT = ".png";
 	private boolean acceptNextAlert = true;
+//	private StringBuffer verificationErrors = new StringBuffer();
 	
 	protected WebDriver driver;
 
@@ -71,6 +72,111 @@ public class TestBase {
 		}
 	}
 
+		public void login(String UserName, String Password) throws Exception {
+		try{
+		driver.get("http://95.110.204.46/nearme-portal/auth/login");
+		driver.findElement(By.id("username")).clear();
+		driver.findElement(By.id("username")).sendKeys(UserName);
+		driver.findElement(By.id("password")).clear();
+		driver.findElement(By.id("password")).sendKeys(Password);
+		driver.findElement(By.name("_action_save")).click();
+		for (int second = 0;; second++) {
+			if (second >= 60) fail("timeout");
+			try { if (isElementPresent(By.xpath("//li[@class=\"profile_menu_top\"]"))) break; } catch (Exception e) {}
+			Thread.sleep(1000);
+			}		
+		} catch (Exception e) {}
+	}
+	
+		public void loginAsAdmin() throws Exception {
+		try{
+		driver.get("http://95.110.204.46/nearme-portal/auth/login");
+		driver.findElement(By.id("username")).clear();
+		driver.findElement(By.id("username")).sendKeys("4680092575");
+		driver.findElement(By.id("password")).clear();
+		driver.findElement(By.id("password")).sendKeys("4680092575");
+		driver.findElement(By.name("_action_save")).click();
+		for (int second = 0;; second++) {
+			if (second >= 60) fail("timeout");
+			try { if (isElementPresent(By.xpath("//li[@class=\"profile_menu_top\"]"))) break; } catch (Exception e) {}
+			Thread.sleep(1000);
+			}		
+		} catch (Exception e) {}
+	}	
+
+		public void logout() throws Exception{
+		try{
+		driver.findElement(By.cssSelector("a.profile_menu_dropdown_link")).click();
+		driver.findElement(By.linkText("Log Out")).click();	
+		checkStartPage();		
+		} catch (Exception e) {}
+	}
+	
+		public void checkStartPage() throws Exception {
+		try{
+		for (int second = 0;; second++) {
+			if (second >= 60) fail("timeout");
+			try { if (isElementPresent(By.id("headerSearchQuery"))) break; } catch (Exception e) {}
+			Thread.sleep(1000);
+			}
+		for (int second = 0;; second++) {
+			if (second >= 60) fail("timeout");
+			try { if (isElementPresent(By.id("headerSearchLocation"))) break; } catch (Exception e) {}
+			Thread.sleep(1000);
+			}
+		for (int second = 0;; second++) {
+			if (second >= 60) fail("timeout");
+			try { if (isElementPresent(By.xpath("//div[@class=\"topnav\"]/a[contains(@href,'signup')]"))) break; } catch (Exception e) {}
+			Thread.sleep(1000);
+			}
+		for (int second = 0;; second++) {
+			if (second >= 60) fail("timeout");
+			try { if (isElementPresent(By.xpath("//div[@class=\"topnav\"]/a[contains(@href,'login')]"))) break; } catch (Exception e) {}
+			Thread.sleep(1000);
+			}	
+		} catch (Exception e) {}
+	}	
+	
+		public void removeUser(String Email) throws Exception {
+		try{
+		driver.findElement(By.cssSelector("#usersTab > span.nav_btn_text")).click();
+		driver.findElement(By.id("keywords")).clear();
+		driver.findElement(By.id("keywords")).sendKeys(Email);
+		driver.findElement(By.id("action_button")).click();
+		driver.findElement(By.id("selectAll")).click();
+		driver.findElement(By.name("_action_bulkDelete")).click();
+		assertTrue(closeAlertAndGetItsText().matches("^Are you sure[\\s\\S]$"));
+		for (int second = 0;; second++) {
+			if (second >= 60) fail("timeout");
+			try { if (isElementPresent(By.xpath("//div[@class=\"bottom_row\"]"))) break; } catch (Exception e) {}
+			Thread.sleep(1000);
+			}
+		} catch (Exception e) {}
+	}
+
+		private boolean isElementPresent(By by) {
+		try {
+		driver.findElement(by);
+		return true;
+		} catch (NoSuchElementException e) {
+		return false;
+		}
+	}
+
+		private String closeAlertAndGetItsText() {
+		try {
+		Alert alert = driver.switchTo().alert();
+		String alertText = alert.getText();
+		if (acceptNextAlert) {
+			alert.accept();
+			} else {
+			alert.dismiss();
+		}
+		return alertText;
+		} finally {
+			acceptNextAlert = true;
+		}
+	}	
 //	@AfterMethod
 //	public void setScreenshot(ITestResult result) {
 //		if (!result.isSuccess()) {

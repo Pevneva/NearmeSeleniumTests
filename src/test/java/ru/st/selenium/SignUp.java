@@ -18,18 +18,24 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
   public void testSignUp() throws Exception {
 	
 	driver.manage().window().maximize();
-	driver.get("http://95.110.204.46/nearme-portal/auth/consumer/signup");
+	//opening start portal page
+	driver.get("http://95.110.204.46/nearme-portal/");
+	//checking that some impotant items is shown
+	checkStartPage();
+	//clicking 'SignUp' link
+    driver.findElement(By.cssSelector("span")).click();
+	//filling all fields
     driver.findElement(By.id("firstName")).clear();
-    driver.findElement(By.id("firstName")).sendKeys("First01");
+    driver.findElement(By.id("firstName")).sendKeys("Ivan");
     driver.findElement(By.id("lastName")).clear();
-    driver.findElement(By.id("lastName")).sendKeys("Last01");
-    new Select(driver.findElement(By.id("gender"))).selectByVisibleText("I'd rather not say");
+    driver.findElement(By.id("lastName")).sendKeys("Ivanov");
+    new Select(driver.findElement(By.id("gender"))).selectByVisibleText("Male");
     driver.findElement(By.id("birthday")).clear();
-    driver.findElement(By.id("birthday")).sendKeys("01/04/80");
+    driver.findElement(By.id("birthday")).sendKeys("01/05/83");
     driver.findElement(By.id("email")).clear();
-    driver.findElement(By.id("email")).sendKeys("123@123.com");
+    driver.findElement(By.id("email")).sendKeys("lyudmila_test_accountant@mail.ru");
     driver.findElement(By.id("username")).clear();
-    driver.findElement(By.id("username")).sendKeys("Username01");
+    driver.findElement(By.id("username")).sendKeys("TestUserName");
     driver.findElement(By.name("password")).clear();
     driver.findElement(By.name("password")).sendKeys("12345678");
     new Select(driver.findElement(By.id("countryCode"))).selectByVisibleText("Belarus");
@@ -38,24 +44,68 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
     	try { if (isElementPresent(By.xpath("//*[@id=\"homeCity\"]/*[@value=\"Minsk\"]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
-
     new Select(driver.findElement(By.id("homeCity"))).selectByVisibleText("Minsk (Horad Minsk)");
+	//clicking on the "Join" button
     driver.findElement(By.name("_action_join")).click();
-    driver.findElement(By.xpath("//div[@class='wrapper']/div/a[contains(@href,'login')]")).click();
-    driver.findElement(By.id("username")).clear();
-    driver.findElement(By.id("username")).sendKeys("4680092575");
-    driver.findElement(By.id("password")).clear();
-    driver.findElement(By.id("password")).sendKeys("4680092575");
-    driver.findElement(By.name("_action_save")).click();
-    driver.findElement(By.cssSelector("#usersTab > span.nav_btn_text")).click();
-    driver.findElement(By.id("keywords")).clear();
-    driver.findElement(By.id("keywords")).sendKeys("123@123.com");
-    driver.findElement(By.id("action_button")).click();
-    driver.findElement(By.id("selectAll")).click();
-    driver.findElement(By.name("_action_bulkDelete")).click();
-    assertTrue(closeAlertAndGetItsText().matches("^Are you sure[\\s\\S]$"));
-    driver.findElement(By.cssSelector("a.profile_menu_dropdown_link")).click();
-    driver.findElement(By.linkText("Log Out")).click();
+	//checking that page is opened
+    assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Confirm Your Email[\\s\\S]*$"));	
+	//opening mail.ru site
+    driver.get( "www.mail.ru");
+	//waiting some time
+    Thread.sleep(2000);
+	//going to test email
+    driver.findElement(By.id("mailbox__login")).clear();
+    driver.findElement(By.id("mailbox__login")).sendKeys("lyudmila_test_accountant");	
+    driver.findElement(By.id("mailbox__password")).clear();
+    driver.findElement(By.id("mailbox__password")).sendKeys("test123");
+    driver.findElement(By.id("mailbox__auth__button")).click();
+	//opening last messages
+	driver.findElement(By.cssSelector("span.messageline__body__name")).click();
+	//waiting some time
+    Thread.sleep(3000);
+	//clicking on link for authorization
+    driver.findElement(By.xpath("//a[contains(text(),'http')]")).click();
+    Thread.sleep(3000);	
+    //finding window with 'Edit User' title and go to it
+        for (String handle : driver.getWindowHandles())
+                {
+                        driver.switchTo().window(handle);
+                        if (driver.getTitle().equals("Edit User")){break;};
+                }
+	//check that Profile page is opened
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.xpath("//div[@class=\"user_profile_menu\"]"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }	
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.id("birthday"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }	
+	//logout
+	logout();
+	//login as created user
+	login("TestUserName","12345678");
+	//check that Account Details page is opened
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.xpath("//div[@class=\"user_profile_menu\"]"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }		
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.xpath("//form[@id=\"userForm\"]"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }	
+	//logout
+	logout();	
+	//login as admin
+	loginAsAdmin();
+    //removing of created user
+	removeUser("lyudmila_test_accountant@mail.ru");
+    //logout
+	logout();
   }
 
   private boolean isElementPresent(By by) {
