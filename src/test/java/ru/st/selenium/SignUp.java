@@ -62,7 +62,7 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
 	//opening last messages
 	driver.findElement(By.cssSelector("span.messageline__body__name")).click();
 	//waiting some time
-    Thread.sleep(3000);
+    Thread.sleep(4000);
 	//clicking on link for authorization
     driver.findElement(By.xpath("//a[contains(text(),'http')]")).click();
     Thread.sleep(3000);	
@@ -106,6 +106,10 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
 	removeUser("lyudmila_test_accountant@mail.ru");
     //logout
 	logout();
+	//opening mail.ru site
+    driver.get( "www.mail.ru");	
+	//log out from mail.ru
+    driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();	
   }
 
   private boolean isElementPresent(By by) {

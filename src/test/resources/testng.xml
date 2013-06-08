@@ -4,8 +4,8 @@
 	<test name="Test1">
 		<parameter name="path" value="/"/>
 		<classes>
-		    <!--<class name="ru.st.selenium.ForgottenPassword"/>-->
 		    <class name="ru.st.selenium.SignUp"/>
+		    <class name="ru.st.selenium.OnlineRegistration"/>
 		</classes>
 	</test>  
 </suite>

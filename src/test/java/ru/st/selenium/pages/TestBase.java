@@ -44,12 +44,15 @@ public class TestBase {
 	protected String gridHubUrl;
 
 	protected String baseUrl;
-
+	
+	protected String baseURL;
+	
 	protected Browser browser;
 
 	@BeforeClass
 	public void init() {
 		baseUrl = PropertyLoader.loadProperty("site.url");
+		baseURL = "http://95.110.204.46/nearme-portal/";
 		gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
 
 		browser = new Browser();
@@ -74,7 +77,7 @@ public class TestBase {
 
 		public void login(String UserName, String Password) throws Exception {
 		try{
-		driver.get("http://95.110.204.46/nearme-portal/auth/login");
+		driver.get(baseURL + "auth/login");
 		driver.findElement(By.id("username")).clear();
 		driver.findElement(By.id("username")).sendKeys(UserName);
 		driver.findElement(By.id("password")).clear();
@@ -90,7 +93,7 @@ public class TestBase {
 	
 		public void loginAsAdmin() throws Exception {
 		try{
-		driver.get("http://95.110.204.46/nearme-portal/auth/login");
+		driver.get(baseURL + "auth/login");
 		driver.findElement(By.id("username")).clear();
 		driver.findElement(By.id("username")).sendKeys("4680092575");
 		driver.findElement(By.id("password")).clear();
@@ -154,6 +157,29 @@ public class TestBase {
 		} catch (Exception e) {}
 	}
 
+
+		public void removeBusiness(String TradingName) throws Exception {
+		try{
+		//going to Businesses tab
+		driver.findElement(By.cssSelector("#registrationsTab > span.nav_btn_text")).click();
+		//entering <TradingName> text to 'Keywords' field
+		driver.findElement(By.id("keywords")).clear();
+		driver.findElement(By.id("keywords")).sendKeys(TradingName);
+		//clicking on Search icon
+		driver.findElement(By.id("action_button")).click();
+		//clicking on 'Select all' checkbox
+		driver.findElement(By.id("selectAll")).click();
+		//clicking on the "Delete" button
+		driver.findElement(By.name("_action_buldDeleteMerchants")).click();
+		assertTrue(closeAlertAndGetItsText().matches("^Are you sure[\\s\\S]$"));	
+		for (int second = 0;; second++) {
+			if (second >= 60) fail("timeout");
+			try { if (isElementPresent(By.xpath("//div[@class=\"bottom_row\"]"))) break; } catch (Exception e) {}
+			Thread.sleep(1000);
+			}
+		} catch (Exception e) {}		
+	}	
+	
 		private boolean isElementPresent(By by) {
 		try {
 		driver.findElement(by);
