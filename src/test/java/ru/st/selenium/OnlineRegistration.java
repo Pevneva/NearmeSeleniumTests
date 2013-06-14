@@ -412,7 +412,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	//checking that merchant page will be opened
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.xpath("//div[@class=\"info_details__title\"]"))) break; } catch (Exception e) {}
+    	try { if (isElementPresent(By.xpath("//h3[@class=\"info_details__title\"]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
 	//clicking on the 'Venue' tab
@@ -420,7 +420,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	//checking that venue page will be opened
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.xpath("//h3[@class=\"info_details__title\"]"))) break; } catch (Exception e) {}
+    	try { if (isElementPresent(By.xpath("//div[@class=\"photo_video\"]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
 	logout();
