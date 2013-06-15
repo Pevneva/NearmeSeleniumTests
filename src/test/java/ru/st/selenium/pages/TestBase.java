@@ -146,13 +146,15 @@ public class TestBase {
 		driver.findElement(By.id("keywords")).clear();
 		driver.findElement(By.id("keywords")).sendKeys(Email);
 		driver.findElement(By.id("action_button")).click();
-		driver.findElement(By.id("selectAll")).click();
-		driver.findElement(By.name("_action_bulkDelete")).click();
-		assertTrue(closeAlertAndGetItsText().matches("^Are you sure[\\s\\S]$"));
-		for (int second = 0;; second++) {
-			if (second >= 60) fail("timeout");
-			try { if (isElementPresent(By.xpath("//div[@class=\"bottom_row\"]"))) break; } catch (Exception e) {}
-			Thread.sleep(1000);
+		if (isElementPresent(By.xpath("//table[@id=\"searchResultList\"]//td[contains(text(),Email)]"))) {
+			driver.findElement(By.id("selectAll")).click();
+			driver.findElement(By.name("_action_bulkDelete")).click();
+			assertTrue(closeAlertAndGetItsText().matches("^Are you sure[\\s\\S]$"));
+			for (int second = 0;; second++) {
+				if (second >= 60) fail("timeout");
+				try { if (isElementPresent(By.xpath("//div[@class=\"bottom_row\"]"))) break; } catch (Exception e) {}
+				Thread.sleep(1000);
+				}
 			}
 		} catch (Exception e) {}
 	}
@@ -167,15 +169,18 @@ public class TestBase {
 		driver.findElement(By.id("keywords")).sendKeys(TradingName);
 		//clicking on Search icon
 		driver.findElement(By.id("action_button")).click();
-		//clicking on 'Select all' checkbox
-		driver.findElement(By.id("selectAll")).click();
-		//clicking on the "Delete" button
-		driver.findElement(By.name("_action_buldDeleteMerchants")).click();
-		assertTrue(closeAlertAndGetItsText().matches("^Are you sure[\\s\\S]$"));	
-		for (int second = 0;; second++) {
-			if (second >= 60) fail("timeout");
-			try { if (isElementPresent(By.xpath("//div[@class=\"bottom_row\"]"))) break; } catch (Exception e) {}
-			Thread.sleep(1000);
+		//checking whether such business was found
+		if (isElementPresent(By.xpath("//table[@id=\"searchResultList\"]//td[2]/a[contains(text(),TradingName)]"))) {
+			//clicking on 'Select all' checkbox
+			driver.findElement(By.id("selectAll")).click();
+			//clicking on the "Delete" button
+			driver.findElement(By.name("_action_buldDeleteMerchants")).click();
+			assertTrue(closeAlertAndGetItsText().matches("^Are you sure[\\s\\S]$"));	
+			for (int second = 0;; second++) {
+				if (second >= 60) fail("timeout");
+				try { if (isElementPresent(By.xpath("//div[@class=\"bottom_row\"]"))) break; } catch (Exception e) {}
+				Thread.sleep(1000);
+				}
 			}
 		} catch (Exception e) {}		
 	}	
