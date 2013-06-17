@@ -21,6 +21,7 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
 	
 	loginAsAdmin();
 	removeUser("lyudmila_test_accountant@mail.ru");
+	logout();
 	
 	//opening start portal page
 	driver.get("http://95.110.204.46/nearme-portal/");
