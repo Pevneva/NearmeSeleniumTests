@@ -19,8 +19,10 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 
 	driver.manage().window().maximize();
 
+	loginAsAdmin();
 	removeBusiness("Auto Online Trading");
 	removeUser("lyudmila_test_03@mail.ru");
+	logout();
 
 	OnlineRegistr("Registration only","");
 	OnlineRegistr("Registration and 3 daily offers","PROMO-SALES-PLA");
