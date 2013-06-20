@@ -184,6 +184,125 @@ public class TestBase {
 			}
 		} catch (Exception e) {}		
 	}	
+
+	public void addBusiness(String TradingName, String BusinessType, String NumberOfVenues) throws Exception {
+	try{  
+    //going to Add Business page
+	driver.findElement(By.cssSelector("span.nav_btn_arrow")).click();
+    driver.findElement(By.linkText("New Business")).click();
+	//selecting Agent
+    new Select(driver.findElement(By.id("contracts[0].salesRep.id"))).selectByVisibleText("PLA - Lyudmila Pevneva");
+	//entering Contract Number
+    driver.findElement(By.id("contracts[0].contractId")).clear();
+    driver.findElement(By.id("contracts[0].contractId")).sendKeys("CoNo-001");
+	//selecting Contract Type
+    new Select(driver.findElement(By.id("contracts[0].type.id"))).selectByVisibleText("IT_0002 : Registration NearMe + 1 Photo of the activity (24 months)");
+	//selecting Payment Method
+    new Select(driver.findElement(By.id("contracts[0].paymentMethod.id"))).selectByVisibleText("Paypal");
+	//selecting Business Type
+    new Select(driver.findElement(By.id("type.id"))).selectByVisibleText(BusinessType);
+	//entering number of venues
+    driver.findElement(By.id("contracts[0].numberOfVenues")).clear();
+    driver.findElement(By.id("contracts[0].numberOfVenues")).sendKeys(NumberOfVenues);
+	//entering Start of Data
+    driver.findElement(By.xpath("//input[@id='contracts[0].startDate']")).sendKeys("01/05/13");
+	//entering First Name for Merchant Manager
+    driver.findElement(By.id("managers[0].firstName")).clear();
+    driver.findElement(By.id("managers[0].firstName")).sendKeys("First01");
+	//entering Last Name for Merchant Manager
+    driver.findElement(By.id("managers[0].lastName")).clear();
+    driver.findElement(By.id("managers[0].lastName")).sendKeys("Last01");
+	//entering email for Merchant Manager
+    driver.findElement(By.id("managers[0].email")).clear();
+    driver.findElement(By.id("managers[0].email")).sendKeys("email_01@mail.ru");
+	//entering Job Title for Merchant Manager	
+    driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).clear();
+    driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).sendKeys("Job Title");
+	//entering National Insurance No for Merchant Manager	
+    driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.nationalInsuranceNo")).clear();
+    driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.nationalInsuranceNo")).sendKeys("National Ins");
+	//entering Telephone for Merchant Manager	
+    driver.findElement(By.id("managers[0].contact.telephone")).clear();
+    driver.findElement(By.id("managers[0].contact.telephone")).sendKeys("2220010");
+	//entering Mobile for Merchant Manager	
+    driver.findElement(By.id("managers[0].contact.mobile")).clear();
+    driver.findElement(By.id("managers[0].contact.mobile")).sendKeys("5550020");
+	//pressing on the "Continue" button
+    driver.findElement(By.name("_action_saveCommercialDetails")).click();
+	//entering URL
+    driver.findElement(By.id("displayName")).clear();
+    driver.findElement(By.id("displayName")).sendKeys("smb01");
+	//entering Company No
+    driver.findElement(By.id("registeredCompanyNo")).clear();
+    driver.findElement(By.id("registeredCompanyNo")).sendKeys("companyNo");
+	//entering Company Vat No	
+    driver.findElement(By.id("registeredVatNo")).clear();
+    driver.findElement(By.id("registeredVatNo")).sendKeys("ComVatNo");
+	//entering Company Name
+    driver.findElement(By.id("companyName")).clear();
+    driver.findElement(By.id("companyName")).sendKeys("Company Name");
+	//entering Trading Name
+    driver.findElement(By.id("tradingName")).clear();
+    driver.findElement(By.id("tradingName")).sendKeys(TradingName);
+	//entering Address1
+    driver.findElement(By.id("registeredAddress.address1")).clear();
+    driver.findElement(By.id("registeredAddress.address1")).sendKeys("Pikadili");
+	//entering City
+    driver.findElement(By.id("registeredAddress.city")).clear();
+    driver.findElement(By.id("registeredAddress.city")).sendKeys("London");
+	//entering Postal Code
+    driver.findElement(By.id("registeredAddress.postalCode")).clear();
+    driver.findElement(By.id("registeredAddress.postalCode")).sendKeys("44004");
+	//selecting country
+    new Select(driver.findElement(By.id("registeredAddress.countryCode"))).selectByVisibleText("United Kingdom");
+	//filling fields on the Contact Details section
+    driver.findElement(By.id("companyContactDetails.telephone")).clear();
+    driver.findElement(By.id("companyContactDetails.telephone")).sendKeys("100001");
+    driver.findElement(By.id("companyContactDetails.fax")).clear();
+    driver.findElement(By.id("companyContactDetails.fax")).sendKeys("100002");
+    driver.findElement(By.id("companyContactDetails.email")).clear();
+    driver.findElement(By.id("companyContactDetails.email")).sendKeys("Email@optional.net");
+    driver.findElement(By.id("companyContactDetails.websiteUrl")).clear();
+    driver.findElement(By.id("companyContactDetails.websiteUrl")).sendKeys("http://www.website001.com");
+    driver.findElement(By.id("companyContactDetails.facebook")).clear();
+    driver.findElement(By.id("companyContactDetails.facebook")).sendKeys("http://www.facebook001.com");
+    driver.findElement(By.id("companyContactDetails.twitter")).clear();
+    driver.findElement(By.id("companyContactDetails.twitter")).sendKeys("http://www.twitter001.com");
+    driver.findElement(By.id("companyContactDetails.foursquare")).clear();
+    driver.findElement(By.id("companyContactDetails.foursquare")).sendKeys("http://www.foursquare001.com");
+    driver.findElement(By.id("companyContactDetails.instagram")).clear();
+    driver.findElement(By.id("companyContactDetails.instagram")).sendKeys("http://www.instagram.com");
+    driver.findElement(By.id("companyContactDetails.pinterest")).clear();
+    driver.findElement(By.id("companyContactDetails.pinterest")).sendKeys("http://www.pinterest.com");
+	//pressing on the "Continue" button
+    driver.findElement(By.name("_action_saveMerchantDetails")).click();
+	//selecting Category
+    driver.findElement(By.xpath("//div[@class='pickList']/div/ul/li[contains(text(),'Attraction')]")).click();
+    driver.findElement(By.cssSelector("button.plus_btn")).click();
+	//entering Keyword
+    driver.findElement(By.id("keywords.ti1")).clear();
+    driver.findElement(By.id("keywords.ti1")).sendKeys("Key Word");
+	//selecting 'Yes' value for 'Show the Additional Info Page in the App' select box
+    new Select(driver.findElement(By.id("isAdditionalInfoForClientEnabled"))).selectByVisibleText("Yes");
+	//press on the "Continue" button
+    driver.findElement(By.name("_action_saveAndReview")).click();
+	//checking that 'Business Added' text is shown
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.xpath("//h1[contains(text(),'Business Added')]"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }
+	} catch (Exception e) {}
+}	
+		private boolean isElementPresent(By by) {
+		try {
+		driver.findElement(by);
+		return true;
+		} catch (NoSuchElementException e) {
+		return false;
+		}
+	}
+
 	
 		private boolean isElementPresent(By by) {
 		try {
