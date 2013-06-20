@@ -77,7 +77,7 @@ public class TestBase {
 
 		public void login(String UserName, String Password) throws Exception {
 		try{
-		driver.get(baseURL + "auth/login");
+		driver.get(baseURL + "login");
 		driver.findElement(By.id("username")).clear();
 		driver.findElement(By.id("username")).sendKeys(UserName);
 		driver.findElement(By.id("password")).clear();
@@ -93,7 +93,7 @@ public class TestBase {
 	
 		public void loginAsAdmin() throws Exception {
 		try{
-		driver.get(baseURL + "auth/login");
+		driver.get(baseURL + "login");
 		driver.findElement(By.id("username")).clear();
 		driver.findElement(By.id("username")).sendKeys("4680092575");
 		driver.findElement(By.id("password")).clear();
