@@ -190,6 +190,12 @@ public class TestBase {
     //going to Add Business page
 	driver.findElement(By.cssSelector("span.nav_btn_arrow")).click();
     driver.findElement(By.linkText("New Business")).click();
+	//checking that 'Sales Representative' select box exists on opened page
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.id("contracts[0].salesRep.id"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }		
 	//selecting Agent
     new Select(driver.findElement(By.id("contracts[0].salesRep.id"))).selectByVisibleText("PLA - Lyudmila Pevneva");
 	//entering Contract Number
@@ -229,6 +235,12 @@ public class TestBase {
     driver.findElement(By.id("managers[0].contact.mobile")).sendKeys("5550020");
 	//pressing on the "Continue" button
     driver.findElement(By.name("_action_saveCommercialDetails")).click();
+	//checking that 'Trading Name' field exists on opened page
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.id("tradingName"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }	
 	//entering URL
     driver.findElement(By.id("displayName")).clear();
     driver.findElement(By.id("displayName")).sendKeys("smb01");
@@ -276,6 +288,12 @@ public class TestBase {
     driver.findElement(By.id("companyContactDetails.pinterest")).sendKeys("http://www.pinterest.com");
 	//pressing on the "Continue" button
     driver.findElement(By.name("_action_saveMerchantDetails")).click();
+	//checking that 'Keywords' field exists on opened page
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.id("keywords.ti1"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }	
 	//selecting Category
     driver.findElement(By.xpath("//div[@class='pickList']/div/ul/li[contains(text(),'Attraction')]")).click();
     driver.findElement(By.cssSelector("button.plus_btn")).click();
