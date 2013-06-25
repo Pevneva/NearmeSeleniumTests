@@ -75,8 +75,7 @@ public class TestBase {
 		}
 	}
 
-		public void login(String UserName, String Password) throws Exception {
-		try{
+	public void login(String UserName, String Password) throws Exception {
 		driver.get(baseURL + "login");
 		driver.findElement(By.id("username")).clear();
 		driver.findElement(By.id("username")).sendKeys(UserName);
@@ -87,12 +86,10 @@ public class TestBase {
 			if (second >= 60) fail("timeout");
 			try { if (isElementPresent(By.xpath("//li[@class=\"profile_menu_top\"]"))) break; } catch (Exception e) {}
 			Thread.sleep(1000);
-			}		
-		} catch (Exception e) {}
+		}		
 	}
 	
-		public void loginAsAdmin() throws Exception {
-		try{
+	public void loginAsAdmin() throws Exception {
 		driver.get(baseURL + "login");
 		driver.findElement(By.id("username")).clear();
 		driver.findElement(By.id("username")).sendKeys("4680092575");
@@ -103,20 +100,16 @@ public class TestBase {
 			if (second >= 60) fail("timeout");
 			try { if (isElementPresent(By.xpath("//li[@class=\"profile_menu_top\"]"))) break; } catch (Exception e) {}
 			Thread.sleep(1000);
-			}		
-		} catch (Exception e) {}
+		}		
 	}	
 
-		public void logout() throws Exception{
-		try{
+	public void logout() throws Exception{
 		driver.findElement(By.cssSelector("a.profile_menu_dropdown_link")).click();
 		driver.findElement(By.linkText("Log Out")).click();	
 		checkStartPage();		
-		} catch (Exception e) {}
 	}
 	
-		public void checkStartPage() throws Exception {
-		try{
+	public void checkStartPage() throws Exception {
 		for (int second = 0;; second++) {
 			if (second >= 60) fail("timeout");
 			try { if (isElementPresent(By.id("headerSearchQuery"))) break; } catch (Exception e) {}
@@ -136,12 +129,10 @@ public class TestBase {
 			if (second >= 60) fail("timeout");
 			try { if (isElementPresent(By.xpath("//div[@class=\"topnav\"]/a[contains(@href,'login')]"))) break; } catch (Exception e) {}
 			Thread.sleep(1000);
-			}	
-		} catch (Exception e) {}
+		}	
 	}	
 	
-		public void removeUser(String Email) throws Exception {
-		try{
+	public void removeUser(String Email) throws Exception {
 		driver.findElement(By.cssSelector("#usersTab > span.nav_btn_text")).click();
 		driver.findElement(By.id("keywords")).clear();
 		driver.findElement(By.id("keywords")).sendKeys(Email);
@@ -154,14 +145,12 @@ public class TestBase {
 				if (second >= 60) fail("timeout");
 				try { if (isElementPresent(By.xpath("//div[@class=\"bottom_row\"]"))) break; } catch (Exception e) {}
 				Thread.sleep(1000);
-				}
 			}
-		} catch (Exception e) {}
+		}
 	}
 
 
-		public void removeBusiness(String TradingName) throws Exception {
-		try{
+	public void removeBusiness(String TradingName) throws Exception {
 		//going to Businesses tab
 		driver.findElement(By.cssSelector("#registrationsTab > span.nav_btn_text")).click();
 		//entering <TradingName> text to 'Keywords' field
@@ -180,13 +169,11 @@ public class TestBase {
 				if (second >= 60) fail("timeout");
 				try { if (isElementPresent(By.xpath("//div[@class=\"bottom_row\"]"))) break; } catch (Exception e) {}
 				Thread.sleep(1000);
-				}
 			}
-		} catch (Exception e) {}		
+		}
 	}	
 
 	public void addBusiness(String TradingName, String BusinessType, String NumberOfVenues) throws Exception {
-	try{  
     //going to Add Business page
 	driver.findElement(By.cssSelector("span.nav_btn_arrow")).click();
     driver.findElement(By.linkText("New Business")).click();
@@ -310,7 +297,6 @@ public class TestBase {
     	try { if (isElementPresent(By.xpath("//h1[contains(text(),'Business Added')]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
-	} catch (Exception e) {}
 }	
 		private boolean isElementPresent(By by) {
 		try {
