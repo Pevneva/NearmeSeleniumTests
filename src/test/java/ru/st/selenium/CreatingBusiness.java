@@ -15,7 +15,7 @@ public class CreatingBusiness extends ru.st.selenium.pages.TestBase {
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Test
-  public void testOnlineRegistration() throws Exception {    
+  public void testCreatingBusiness() throws Exception {    
 
 	String TradName="Auto Admin Trading";
 	
