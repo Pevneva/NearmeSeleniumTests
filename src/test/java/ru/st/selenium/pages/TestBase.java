@@ -112,24 +112,9 @@ public class TestBase {
 	public void checkStartPage() throws Exception {
 		for (int second = 0;; second++) {
 			if (second >= 60) fail("timeout");
-			try { if (isElementPresent(By.id("headerSearchQuery"))) break; } catch (Exception e) {}
+			try { if (isElementPresent(By.xpath("//div[@class='home-login-container']"))) break; } catch (Exception e) {}
 			Thread.sleep(1000);
 			}
-		for (int second = 0;; second++) {
-			if (second >= 60) fail("timeout");
-			try { if (isElementPresent(By.id("headerSearchLocation"))) break; } catch (Exception e) {}
-			Thread.sleep(1000);
-			}
-		for (int second = 0;; second++) {
-			if (second >= 60) fail("timeout");
-			try { if (isElementPresent(By.xpath("//div[@class=\"topnav\"]/a[contains(@href,'signup')]"))) break; } catch (Exception e) {}
-			Thread.sleep(1000);
-			}
-		for (int second = 0;; second++) {
-			if (second >= 60) fail("timeout");
-			try { if (isElementPresent(By.xpath("//div[@class=\"topnav\"]/a[contains(@href,'login')]"))) break; } catch (Exception e) {}
-			Thread.sleep(1000);
-		}	
 	}	
 	
 	public void removeUser(String Email) throws Exception {

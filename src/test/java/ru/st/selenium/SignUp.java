@@ -20,16 +20,17 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
 	driver.manage().window().maximize();
 	
 	loginAsAdmin();
-	removeUser("lyudmila_test_accountant@mail.ru");
+//	removeUser("lyudmila_test_accountant@mail.ru");
 	logout();
-	
 	//opening start portal page
-	driver.get("http://95.110.204.46/nearme-portal/");
-	//checking that some impotant items is shown
+	driver.get(baseUrl);
+	//checking that start page is opened
 	checkStartPage();
-	//clicking 'SignUp' link
-    driver.findElement(By.cssSelector("span")).click();
-	//filling all fields
+	//clicking on the "Log In" link
+	driver.findElement(By.linkText("Log In")).click();
+	//clicking on the "Sign Up" link
+	driver.findElement(By.linkText("Sign Up")).click();	
+ 	//filling all fields
     driver.findElement(By.id("firstName")).clear();
     driver.findElement(By.id("firstName")).sendKeys("Ivan");
     driver.findElement(By.id("lastName")).clear();
