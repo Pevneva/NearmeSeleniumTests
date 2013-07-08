@@ -37,6 +37,8 @@ public class SignUpClient extends ru.st.selenium.pages.TestBase {
 		System.out.println("Removing user with 'lyudmila_test_03@mail.ru' email...");		
 		loginAsAdmin();
 		removeUser("lyudmila_test_03@mail.ru");
+		logout();
+		
 		//Executing API Sign Up process
 		System.out.println("Executing API Sign Up process...");
 		String signupUri="http://95.110.204.46/nearme-portal/api/v1/signup?hash=3/3sVlGXuPb/IYUqbflui5DwjgIEJHAtCcYoJGrefVE=&email=lyudmila_test_03@mail.ru";

@@ -20,7 +20,7 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
 	driver.manage().window().maximize();
 	
 	loginAsAdmin();
-//	removeUser("lyudmila_test_accountant@mail.ru");
+	removeUser("lyudmila_test_accountant@mail.ru");
 	logout();
 	//opening start portal page
 	driver.get(baseUrl);
