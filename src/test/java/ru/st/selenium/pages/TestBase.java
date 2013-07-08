@@ -334,7 +334,10 @@ public static String postRequestWithToken(String request_uri, String token) thro
 		return b;
   }
 
-
+  public static int	indexOfToken(String str, String subStr) throws Exception {
+		int otv =str.indexOf(subStr);
+		return otv;
+  }	
 	
 		private boolean isElementPresent(By by) {
 		try {
