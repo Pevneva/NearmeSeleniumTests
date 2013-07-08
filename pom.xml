@@ -27,6 +27,11 @@
 			<artifactId>operadriver</artifactId>
 			<version>1.2</version>
 		</dependency>
+		<dependency>
+			<groupId>HTTPClient</groupId>
+			<artifactId>HTTPClient</artifactId>
+			<version>0.3-3</version>
+		</dependency>		
 	</dependencies>
 	<build>
 		<resources> 
