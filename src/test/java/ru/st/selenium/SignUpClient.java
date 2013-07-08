@@ -30,7 +30,8 @@ public class SignUpClient extends ru.st.selenium.pages.TestBase {
 
   @Test
   public void testSignUpClient() throws Exception { 
-		
+
+		System.out.println("========== SIGN UP CLIENT ==========");  
 		driver.manage().window().maximize();
 		
 		//Removing user with 'lyudmila_test_03@mail.ru' email

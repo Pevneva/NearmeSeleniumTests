@@ -16,9 +16,9 @@ public class CreatingBusiness extends ru.st.selenium.pages.TestBase {
 
   @Test
   public void testCreatingBusiness() throws Exception {    
-
 	String TradName="Auto Admin Trading";
 	
+	System.out.println("========== ADMIN CREATING BUSINESS ==========");	
 	driver.manage().window().maximize();
 	loginAsAdmin();
 	

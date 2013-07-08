@@ -17,6 +17,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
   @Test
   public void testOnlineRegistration() throws Exception {    
 
+	System.out.println("========== ONLINE REGISTRATION ==========");
 	driver.manage().window().maximize();
 
 	loginAsAdmin();

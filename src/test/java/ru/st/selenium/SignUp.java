@@ -16,7 +16,8 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
 
   @Test
   public void testSignUp() throws Exception {
-	
+
+	System.out.println("========== SIGN UP STANDARD ==========");  
 	driver.manage().window().maximize();
 	
 	loginAsAdmin();

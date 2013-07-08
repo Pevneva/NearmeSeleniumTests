@@ -86,6 +86,7 @@ public class TestBase {
 	}
 
 	public void login(String UserName, String Password) throws Exception {
+		System.out.println("Logging in as" + UserName + " user...");
 		driver.get(baseURL + "login");
 		driver.findElement(By.id("username")).clear();
 		driver.findElement(By.id("username")).sendKeys(UserName);
@@ -96,10 +97,12 @@ public class TestBase {
 			if (second >= 60) fail("timeout");
 			try { if (isElementPresent(By.xpath("//li[@class=\"profile_menu_top\"]"))) break; } catch (Exception e) {}
 			Thread.sleep(1000);
-		}		
+		}
+		System.out.println("OK!");
 	}
 	
 	public void loginAsAdmin() throws Exception {
+		System.out.println("Logging in as 4680092575 user...");	
 		driver.get(baseURL + "login");
 		driver.findElement(By.id("username")).clear();
 		driver.findElement(By.id("username")).sendKeys("4680092575");
@@ -110,13 +113,16 @@ public class TestBase {
 			if (second >= 60) fail("timeout");
 			try { if (isElementPresent(By.xpath("//li[@class=\"profile_menu_top\"]"))) break; } catch (Exception e) {}
 			Thread.sleep(1000);
-		}		
+		}
+		System.out.println("OK!");		
 	}	
 
 	public void logout() throws Exception{
+		System.out.println("Logging out...");	
 		driver.findElement(By.cssSelector("a.profile_menu_dropdown_link")).click();
 		driver.findElement(By.linkText("Log Out")).click();	
-		checkStartPage();		
+		checkStartPage();
+		System.out.println("OK!");		
 	}
 	
 	public void checkStartPage() throws Exception {
@@ -128,6 +134,7 @@ public class TestBase {
 	}	
 	
 	public void removeUser(String Email) throws Exception {
+		System.out.println("Removing user with " + Email + " email...");	
 		driver.findElement(By.cssSelector("#usersTab > span.nav_btn_text")).click();
 		driver.findElement(By.id("keywords")).clear();
 		driver.findElement(By.id("keywords")).sendKeys(Email);
@@ -142,10 +149,12 @@ public class TestBase {
 				Thread.sleep(1000);
 			}
 		}
+		System.out.println("OK!");		
 	}
 
 
 	public void removeBusiness(String TradingName) throws Exception {
+		System.out.println("Removing Business with " + Email + " trading name...");	
 		//going to Businesses tab
 		driver.findElement(By.cssSelector("#registrationsTab > span.nav_btn_text")).click();
 		//entering <TradingName> text to 'Keywords' field
@@ -166,6 +175,7 @@ public class TestBase {
 				Thread.sleep(1000);
 			}
 		}
+		System.out.println("OK!");
 	}	
 
 	public void addBusiness(String TradingName, String BusinessType, String NumberOfVenues) throws Exception {
@@ -334,12 +344,12 @@ public static String postRequestWithToken(String request_uri, String token) thro
 		return b;
   }
 
-  public static int	indexOfToken(String str, String subStr) throws Exception {
+	public static int	indexOfToken(String str, String subStr) throws Exception {
 		int otv =str.indexOf(subStr);
 		return otv;
   }	
 	
-		private boolean isElementPresent(By by) {
+	private boolean isElementPresent(By by) {
 		try {
 		driver.findElement(by);
 		return true;
@@ -349,7 +359,7 @@ public static String postRequestWithToken(String request_uri, String token) thro
 	}
 
 	
-		private String closeAlertAndGetItsText() {
+	private String closeAlertAndGetItsText() {
 		try {
 		Alert alert = driver.switchTo().alert();
 		String alertText = alert.getText();
