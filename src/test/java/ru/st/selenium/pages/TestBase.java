@@ -154,7 +154,7 @@ public class TestBase {
 
 
 	public void removeBusiness(String TradingName) throws Exception {
-		System.out.println("Removing Business with " + Email + " trading name...");	
+		System.out.println("Removing Business with " + TradingName + " trading name...");	
 		//going to Businesses tab
 		driver.findElement(By.cssSelector("#registrationsTab > span.nav_btn_text")).click();
 		//entering <TradingName> text to 'Keywords' field
