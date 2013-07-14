@@ -26,7 +26,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	logout();
 
 	OnlineRegistr("Registration only","");
-	OnlineRegistr("Registration and 3 daily offers","PROMO-SALES-PLA");
+//	OnlineRegistr("Registration and 3 daily offers","PROMO-SALES-PLA");
 	
 	}
 
@@ -214,7 +214,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	//clicking on 'select_all' checkbox
     driver.findElement(By.name("selectAll")).click();	
 	//selecting 'Publish' value in 'Status' select box
-    new Select(driver.findElement(By.id("newStatus"))).selectByVisibleText("Publish");
+    new Select(driver.findElement(By.id("newStatus"))).selectByVisibleText("Publish / Approve");
 	//clicking on the "Update" button
     driver.findElement(By.name("_action_updateContract")).click();
 	//checking that "searchResultList" table contains 'status_live' class	
@@ -225,31 +225,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     }	
 	System.out.println("OK!");
 	
-	/* Checking that User has 'Enabled' status */
 
-	System.out.println("Checking that User has 'Enabled' status...");	
-	//Going to Users tab
-	driver.findElement(By.cssSelector("#usersTab > span.nav_btn_text")).click();
-	//entering 'lyudmila_test_03@mail.ru' to "Keywords' field
-	driver.findElement(By.id("keywords")).clear();
-	driver.findElement(By.id("keywords")).sendKeys("lyudmila_test_03@mail.ru");
-	driver.findElement(By.id("action_button")).click();	
-	//checking that "searchResultList" table contains 'lyudmila_test_03@mail.ru' text
-    for (int second = 0;; second++) {
-    	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.xpath("//table[@id=\"searchResultList\"]//td[contains(text(),'lyudmila_test_03@mail.ru')]"))) break; } catch (Exception e) {}
-    	Thread.sleep(1000);
-    }	
-	//checking that "searchResultList" table contains 'status_approved' class	
-    for (int second = 0;; second++) {
-    	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.xpath("//table[@id=\"searchResultList\"]//div[@class='status_approved']"))) break; } catch (Exception e) {}
-    	Thread.sleep(1000);
-    }	
-	logout();
-	System.out.println("OK!");
-	
-	
 	/* Checking that emails notifications were sent */
 
 	System.out.println("Checking that emails notifications were sent...");
