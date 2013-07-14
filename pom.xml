@@ -78,7 +78,7 @@
 				<user.username></user.username>
 				<user.password></user.password>
 				<grid2.hub></grid2.hub>
-				<site.url>http://95.110.204.46/nearme-portal/</site.url>
+				<site.url>https://stage.getnearme.com/</site.url>
 				<browser.name>firefox</browser.name>
 				<browser.version></browser.version>
 				<browser.platform></browser.platform>

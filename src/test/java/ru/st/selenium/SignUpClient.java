@@ -42,7 +42,7 @@ public class SignUpClient extends ru.st.selenium.pages.TestBase {
 		
 		//Executing API Sign Up process
 		System.out.println("Executing API Sign Up process...");
-		String signupUri="http://95.110.204.46/nearme-portal/api/v1/signup?hash=3/3sVlGXuPb/IYUqbflui5DwjgIEJHAtCcYoJGrefVE=&email=lyudmila_test_03@mail.ru";
+		String signupUri=baseUrl+"/api/v1/signup?hash=3/3sVlGXuPb/IYUqbflui5DwjgIEJHAtCcYoJGrefVE=&email=lyudmila_test_03@mail.ru";
 		respBody=postRequest(signupUri);
 		System.out.println("Response:");
 		System.out.println(respBody);
@@ -74,7 +74,7 @@ public class SignUpClient extends ru.st.selenium.pages.TestBase {
 		
 		//Executing API Log Out process with taken token
 		System.out.println("Executing API Log Out with taken token...");
-		String logoutUri="http://95.110.204.46/nearme-portal/api/v1/logout?hash=3/3sVlGXuPb/IYUqbflui5DwjgIEJHAtCcYoJGrefVE=";
+		String logoutUri=baseUrl+"api/v1/logout?hash=3/3sVlGXuPb/IYUqbflui5DwjgIEJHAtCcYoJGrefVE=";
 		respBody=postRequestWithToken(logoutUri,token);
 		System.out.println("Response:");
 		System.out.println(respBody);
@@ -85,7 +85,7 @@ public class SignUpClient extends ru.st.selenium.pages.TestBase {
 		
 		//Executing API Log In process
 		System.out.println("Executing API Log In process...");
-		String loginUri="http://95.110.204.46/nearme-portal/api/v1/login?hash=3/3sVlGXuPb/IYUqbflui5DwjgIEJHAtCcYoJGrefVE=";
+		String loginUri=baseUrl+"api/v1/login?hash=3/3sVlGXuPb/IYUqbflui5DwjgIEJHAtCcYoJGrefVE=";
 		respBody=postRequest(loginUri);
 		System.out.println("Response:");
 		System.out.println(respBody);
@@ -93,7 +93,7 @@ public class SignUpClient extends ru.st.selenium.pages.TestBase {
 
 		//Executing API Forgot process
 		System.out.println("Executing API Forgot process...");
-		String forgotUri="http://95.110.204.46/nearme-portal/api/v1/forgot?user=lyudmila_test_03@mail.ru";
+		String forgotUri=baseUrl+"api/v1/forgot?user=lyudmila_test_03@mail.ru";
 		respBody=postRequest(forgotUri);		
 		System.out.println("Response:");
 		System.out.println(respBody);

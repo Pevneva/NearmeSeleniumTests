@@ -87,7 +87,7 @@ public class TestBase {
 
 	public void login(String UserName, String Password) throws Exception {
 		System.out.println("Logging in as" + UserName + " user...");
-		driver.get(baseURL + "login");
+		driver.get(baseUrl + "login");
 		driver.findElement(By.id("username")).clear();
 		driver.findElement(By.id("username")).sendKeys(UserName);
 		driver.findElement(By.id("password")).clear();
@@ -102,12 +102,15 @@ public class TestBase {
 	}
 	
 	public void loginAsAdmin() throws Exception {
-		System.out.println("Logging in as 4680092575 user...");	
-		driver.get(baseURL + "login");
+		String user="";
+		if (baseUrl.equals("http://95.110.204.46/nearme-portal/")) {user="4680092575";}
+		if (baseUrl.equals("https://stage.getnearme.com/")) {user="3372014222";}
+		System.out.println("Logging in as "+user+" user...");	
+		driver.get(baseUrl + "login");
 		driver.findElement(By.id("username")).clear();
-		driver.findElement(By.id("username")).sendKeys("4680092575");
+		driver.findElement(By.id("username")).sendKeys(user);
 		driver.findElement(By.id("password")).clear();
-		driver.findElement(By.id("password")).sendKeys("4680092575");
+		driver.findElement(By.id("password")).sendKeys(user);
 		driver.findElement(By.name("_action_save")).click();
 		for (int second = 0;; second++) {
 			if (second >= 60) fail("timeout");
@@ -115,7 +118,7 @@ public class TestBase {
 			Thread.sleep(1000);
 		}
 		System.out.println("OK!");		
-	}	
+	}		
 
 	public void logout() throws Exception{
 		System.out.println("Logging out...");	
@@ -133,11 +136,11 @@ public class TestBase {
 			}
 	}	
 	
-	public void removeUser(String Email) throws Exception {
-		System.out.println("Removing user with " + Email + " email...");	
+	public void removeUser(String email) throws Exception {
+		System.out.println("Removing user with " + email + " email...");	
 		driver.findElement(By.cssSelector("#usersTab > span.nav_btn_text")).click();
 		driver.findElement(By.id("keywords")).clear();
-		driver.findElement(By.id("keywords")).sendKeys(Email);
+		driver.findElement(By.id("keywords")).sendKeys(email);
 		driver.findElement(By.id("action_button")).click();
 		if (isElementPresent(By.xpath("//table[@id=\"searchResultList\"]//td[contains(text(),Email)]"))) {
 			driver.findElement(By.id("selectAll")).click();
@@ -179,7 +182,11 @@ public class TestBase {
 	}	
 
 	public void addBusiness(String TradingName, String BusinessType, String NumberOfVenues) throws Exception {
-    //going to Add Business page
+    System.out.println("Adding business...");
+    System.out.println("TRADING NAME:     "+TradingName);
+    System.out.println("BUSINESS TYPE:     "+BusinessType);
+    System.out.println("NUMBER OF VENUES:     "+NumberOfVenues);
+	//going to Add Business page
 	driver.findElement(By.cssSelector("span.nav_btn_arrow")).click();
     driver.findElement(By.linkText("New Business")).click();
 	//checking that 'Sales Representative' select box exists on opened page
@@ -302,6 +309,7 @@ public class TestBase {
     	try { if (isElementPresent(By.xpath("//h1[contains(text(),'Business Added')]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
+	System.out.println("OK!" );	
 }	
 
 public static String postRequest(String request_uri) throws Exception { 
@@ -320,7 +328,6 @@ public static String postRequest(String request_uri) throws Exception {
 
 public static String postRequestWithToken(String request_uri, String token) throws Exception { 
     DefaultHttpClient httpclient = new DefaultHttpClient();
-	System.out.println("token inside = "+token);
     HttpPost httpPost = new HttpPost(request_uri);		
 	httpPost.setHeader("session_token",token);	
     try {

@@ -33,7 +33,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
   public void OnlineRegistr(String ContractType, String PromoCode)throws Exception {
 	try{
 	//opening external registration page
-	driver.get(baseURL+"merchant/signup");
+	driver.get(baseUrl+"merchant/signup");
 	//filling company data fields
     driver.findElement(By.id("companyName")).clear();
     driver.findElement(By.id("companyName")).sendKeys("Auto Test Company");
