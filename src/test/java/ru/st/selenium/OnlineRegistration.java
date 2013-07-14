@@ -31,10 +31,13 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	}
 
   public void OnlineRegistr(String ContractType, String PromoCode)throws Exception {
-	try{
+	System.out.println("Checking online registration...");
+	System.out.println("CONTRACT TYPE:     "+ContractType);
+	System.out.println("PROMO CODE:     "+PromoCode);
 	//opening external registration page
 	driver.get(baseUrl+"merchant/signup");
 	//filling company data fields
+	System.out.println("Filling all fields on external page and continue...");	
     driver.findElement(By.id("companyName")).clear();
     driver.findElement(By.id("companyName")).sendKeys("Auto Test Company");
     driver.findElement(By.id("tradingName")).clear();
@@ -119,7 +122,9 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     driver.findElement(By.name("_action_null")).click();
 	//checking that start page of nearme was opened
 	checkStartPage();
+	System.out.println("OK!");
 	//opening mail.ru site
+	System.out.println("Going to mail.ru and checking that 'Regisrtation in NearMe' email was sent...");	
     driver.get( "www.mail.ru");
 	//going to test email
     driver.findElement(By.id("mailbox__login")).clear();
@@ -143,10 +148,12 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     }
 	//log out from 'lyudmila_test_03@mail.ru' email
     driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();	
-
+	System.out.println("OK!");
+	
 	
 	/* Checking that Business with 'Auto Online Trading' trading name was created and has 'Pending' status */
-	
+
+	System.out.println("Checking that Business with 'Auto Online Trading' trading name was created and has 'Pending' status...");	
 	loginAsAdmin();
 	//going to Businesses tab
     driver.findElement(By.cssSelector("#registrationsTab > span.nav_btn_text")).click();
@@ -167,9 +174,12 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     	try { if (isElementPresent(By.xpath("//table[@id=\"searchResultList\"]//div[@class='status_pending']"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }	
+	System.out.println("OK!");
+
 	
 	/* Checking that User with 'lyudmila_test_03@mail.ru' email was created and has 'Disabled' status */
-	
+
+	System.out.println("Checking that User with 'lyudmila_test_03@mail.ru' email was created and has 'Disabled' status...");	
 	//Going to Users tab
 	driver.findElement(By.cssSelector("#usersTab > span.nav_btn_text")).click();
 	//entering 'lyudmila_test_03@mail.ru' to "Keywords' field
@@ -188,10 +198,12 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     	try { if (isElementPresent(By.xpath("//table[@id=\"searchResultList\"]//div[@class='status_rejected']"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
-
+	System.out.println("OK!");
+	
 
 	/* Approving new business */
 
+	System.out.println("Approving new business...");	
 	//going to Businesses tab
     driver.findElement(By.cssSelector("#registrationsTab > span.nav_btn_text")).click();
     //entering 'Auto Online Trading' text to 'Keywords' field
@@ -211,9 +223,11 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     	try { if (isElementPresent(By.xpath("//table[@id=\"searchResultList\"]//div[@class='status_live']"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }	
+	System.out.println("OK!");
 	
 	/* Checking that User has 'Enabled' status */
-	
+
+	System.out.println("Checking that User has 'Enabled' status...");	
 	//Going to Users tab
 	driver.findElement(By.cssSelector("#usersTab > span.nav_btn_text")).click();
 	//entering 'lyudmila_test_03@mail.ru' to "Keywords' field
@@ -233,10 +247,12 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     	Thread.sleep(1000);
     }	
 	logout();
+	System.out.println("OK!");
 	
 	
 	/* Checking that emails notifications were sent */
 
+	System.out.println("Checking that emails notifications were sent...");
 	//opening mail.ru site
     driver.get( "www.mail.ru");
 	//going to test email
@@ -267,7 +283,9 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//div[@id=\"ML0\"]/div[2]//span[contains(text(),'Welcome to NearMe')]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
-    }	
+    }
+	System.out.println("OK!");	
+	System.out.println("Opening email and going by activation link...");	
 	//opening second message
     driver.findElement(By.xpath("//div[@id=\"ML0\"]/div[2]//span[contains(text(),'Welcome to NearMe')]")).click();
 	//clicking on the 'click here' link
@@ -281,16 +299,19 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
        }	
 	//checking that start page was opened	
 	checkStartPage();
-
+	System.out.println("OK!");	
+	
 	/* Log out from email */
 
 	//opening mail.ru site
     driver.get( "www.mail.ru");	
 	//log out from mail.ru
     driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();	
+
 	
 	/*  Completing final registration step */
-	
+
+	System.out.println("Completing final registration step...");	
 	//login as new Merchant Manager user
 	login("Manager","12345678");
 	//checking that 'Complete Business Registration' page was opened
@@ -355,7 +376,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	//filling "Url Name" filed
     driver.findElement(By.id("displayName")).sendKeys("venue001");
 
-
+	
 	/* Filling Opening Hours forms */	
 	
 	//noting by tick 'I'd like to enter two sets of hours for a single day.' select box	
@@ -430,14 +451,15 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     	Thread.sleep(1000);
     }
 	logout();
-	
+	System.out.println("OK!");
 	
 	/* Removing created data */
+	System.out.println("Removing created data...");	
 	loginAsAdmin();
 	removeBusiness("Auto Online Trading");
 	removeUser("lyudmila_test_03@mail.ru");
 	logout();
-		} catch (Exception e) {}
+	System.out.println("OK!");		
 	}
   
   private boolean isElementPresent(By by) {
