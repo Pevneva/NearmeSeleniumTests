@@ -22,11 +22,11 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 
 	loginAsAdmin();
 	removeBusiness("Auto Online Trading");
-	removeUser("lyudmila_test_03@mail.ru");
+	removeUser("lyudmila_test_mm@mail.ru");
 	logout();
 
 	OnlineRegistr("Registration only","");
-//	OnlineRegistr("Registration and 3 daily offers","PROMO-SALES-PLA");
+	OnlineRegistr("Registration and 3 daily offers","PROMO-SALES-PLA");
 	
 	}
 
@@ -66,7 +66,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     driver.findElement(By.id("lastName")).clear();
     driver.findElement(By.id("lastName")).sendKeys("Manager");
     driver.findElement(By.id("email")).clear();
-    driver.findElement(By.id("email")).sendKeys("lyudmila_test_03@mail.ru");
+    driver.findElement(By.id("email")).sendKeys("lyudmila_test_mm@mail.ru");
     driver.findElement(By.id("username")).clear();
     driver.findElement(By.id("username")).sendKeys("Manager");
     driver.findElement(By.id("password")).clear();
@@ -128,7 +128,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     driver.get( "www.mail.ru");
 	//going to test email
     driver.findElement(By.id("mailbox__login")).clear();
-    driver.findElement(By.id("mailbox__login")).sendKeys("lyudmila_test_03");	
+    driver.findElement(By.id("mailbox__login")).sendKeys("lyudmila_test_mm@mail.ru");	
     driver.findElement(By.id("mailbox__password")).clear();
     driver.findElement(By.id("mailbox__password")).sendKeys("test12345");
     driver.findElement(By.id("mailbox__auth__button")).click();
@@ -146,7 +146,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     	try { if (isElementPresent(By.xpath("//div[@class=\"mr_read__top_in\"]//span[contains(text(),'Registration in NearMe')]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
-	//log out from 'lyudmila_test_03@mail.ru' email
+	//log out from 'lyudmila_test_mm@mail.ru' email
     driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();	
 	System.out.println("OK!");
 	
@@ -177,19 +177,19 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	System.out.println("OK!");
 
 	
-	/* Checking that User with 'lyudmila_test_03@mail.ru' email was created and has 'Disabled' status */
+	/* Checking that User with 'lyudmila_test_mm@mail.ru' email was created and has 'Disabled' status */
 
-	System.out.println("Checking that User with 'lyudmila_test_03@mail.ru' email was created and has 'Disabled' status...");	
+	System.out.println("Checking that User with 'lyudmila_test_mm@mail.ru' email was created and has 'Disabled' status...");	
 	//Going to Users tab
 	driver.findElement(By.cssSelector("#usersTab > span.nav_btn_text")).click();
-	//entering 'lyudmila_test_03@mail.ru' to "Keywords' field
+	//entering 'lyudmila_test_mm@mail.ru' to "Keywords' field
 	driver.findElement(By.id("keywords")).clear();
-	driver.findElement(By.id("keywords")).sendKeys("lyudmila_test_03@mail.ru");
+	driver.findElement(By.id("keywords")).sendKeys("lyudmila_test_mm@mail.ru");
 	driver.findElement(By.id("action_button")).click();	
-	//checking that "searchResultList" table contains 'lyudmila_test_03@mail.ru' text
+	//checking that "searchResultList" table contains 'lyudmila_test_mm@mail.ru' text
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.xpath("//table[@id=\"searchResultList\"]//td[contains(text(),'lyudmila_test_03@mail.ru')]"))) break; } catch (Exception e) {}
+    	try { if (isElementPresent(By.xpath("//table[@id=\"searchResultList\"]//td[contains(text(),'lyudmila_test_mm@mail.ru')]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }	
 	//checking that "searchResultList" table contains 'status_rejected' class	
@@ -233,7 +233,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     driver.get( "www.mail.ru");
 	//going to test email
     driver.findElement(By.id("mailbox__login")).clear();
-    driver.findElement(By.id("mailbox__login")).sendKeys("lyudmila_test_03");	
+    driver.findElement(By.id("mailbox__login")).sendKeys("lyudmila_test_mm@mail.ru");	
     driver.findElement(By.id("mailbox__password")).clear();
     driver.findElement(By.id("mailbox__password")).sendKeys("test12345");
     driver.findElement(By.id("mailbox__auth__button")).click();
@@ -433,7 +433,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	System.out.println("Removing created data...");	
 	loginAsAdmin();
 	removeBusiness("Auto Online Trading");
-	removeUser("lyudmila_test_03@mail.ru");
+	removeUser("lyudmila_test_mm@mail.ru");
 	logout();
 	System.out.println("OK!");		
 	}
