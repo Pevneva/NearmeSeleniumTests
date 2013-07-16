@@ -267,29 +267,17 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	//clicking on the 'click here' link
     driver.findElement(By.linkText("click here")).click();
 
-    //finding window with 'NearMe - Local Knowledge' title and go to it
+    //finding window with 'Complete Business Registration' title and go to it
     for (String handle : driver.getWindowHandles())
        {
        driver.switchTo().window(handle);
-       if (driver.getTitle().equals("NearMe - Local Knowledge")){break;};
+       if (driver.getTitle().equals("Complete Business Registration")){break;};
        }	
-	//checking that start page was opened	
-	checkStartPage();
 	System.out.println("OK!");	
-	
-	/* Log out from email */
-
-	//opening mail.ru site
-    driver.get( "www.mail.ru");	
-	//log out from mail.ru
-    driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();	
-
 	
 	/*  Completing final registration step */
 
 	System.out.println("Completing final registration step...");	
-	//login as new Merchant Manager user
-	login("Manager","12345678");
 	//checking that 'Complete Business Registration' page was opened
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
@@ -428,6 +416,14 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     }
 	logout();
 	System.out.println("OK!");
+
+	/* Log out from email */
+	System.out.println("Logging out from email...");	
+	//opening mail.ru site
+    driver.get( "www.mail.ru");	
+	//log out from mail.ru
+    driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();		
+	System.out.println("OK!");
 	
 	/* Removing created data */
 	System.out.println("Removing created data...");	
@@ -435,6 +431,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	removeBusiness("Auto Online Trading");
 	removeUser("lyudmila_test_mm@mail.ru");
 	logout();
+	
 	System.out.println("OK!");		
 	}
   
