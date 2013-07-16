@@ -7,6 +7,7 @@
 		    <class name="ru.st.selenium.SignUp"/>
 		    <class name="ru.st.selenium.SignUpClient"/>
 		    <class name="ru.st.selenium.OnlineRegistration"/>
+		    <class name="ru.st.selenium.OnlineRegistrationExistingUser"/>
 		    <class name="ru.st.selenium.CreatingBusiness"/>			
 		</classes>
 	</test>  
