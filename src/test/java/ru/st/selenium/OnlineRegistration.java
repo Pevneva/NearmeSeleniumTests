@@ -31,9 +31,12 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	}
 
   public void OnlineRegistr(String ContractType, String PromoCode)throws Exception {
-	System.out.println("Checking online registration...");
+	System.out.println("");
+	System.out.println("--- Checking online registration with next data: ---");
+	System.out.println("");
 	System.out.println("CONTRACT TYPE:     "+ContractType);
 	System.out.println("PROMO CODE:     "+PromoCode);
+	System.out.println("");	
 	//opening external registration page
 	driver.get(baseUrl+"merchant/signup");
 	//filling company data fields
@@ -426,7 +429,9 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	System.out.println("OK!");
 	
 	/* Removing created data */
-	System.out.println("Removing created data...");	
+	System.out.println("");	
+	System.out.println("--- Removing created data... ---");	
+	System.out.println("");		
 	loginAsAdmin();
 	removeBusiness("Auto Online Trading");
 	removeUser("lyudmila_test_mm@mail.ru");

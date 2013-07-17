@@ -23,14 +23,20 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
 	loginAsAdmin();
 	removeUser("lyudmila_test_accountant@mail.ru");
 	logout();
+	System.out.println("");
 	//opening start portal page
+	System.out.println("Opening start portal page...");	
 	driver.get(baseUrl);
 	//checking that start page is opened
 	checkStartPage();
+	System.out.println("OK!");	
+	System.out.println("Opening Sig Up page...");	
 	//clicking on the "Log In" link
 	driver.findElement(By.linkText("Log In")).click();
 	//clicking on the "Sign Up" link
-	driver.findElement(By.linkText("Sign Up")).click();	
+	driver.findElement(By.linkText("Sign Up")).click();
+	System.out.println("OK!");	
+	System.out.println("Filling all fields and continue...");	
  	//filling all fields
     driver.findElement(By.id("firstName")).clear();
     driver.findElement(By.id("firstName")).sendKeys("Ivan");
@@ -56,6 +62,8 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
     driver.findElement(By.name("_action_join")).click();
 	//checking that page is opened
     assertTrue(driver.findElement(By.cssSelector("BODY")).getText().matches("^[\\s\\S]*Confirm Your Email[\\s\\S]*$"));	
+	System.out.println("OK!");	
+	System.out.println("Checking that email was sent...");	
 	//opening mail.ru site
     driver.get( "www.mail.ru");
 	//waiting some time
@@ -68,11 +76,15 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
     driver.findElement(By.id("mailbox__auth__button")).click();
 	//opening last messages
 	driver.findElement(By.cssSelector("span.messageline__body__name")).click();
+	System.out.println("OK!");	
+	System.out.println("Clicking on the activation link...");	
 	//waiting some time
     Thread.sleep(4000);
 	//clicking on link for authorization
     driver.findElement(By.xpath("//a[contains(text(),'http')]")).click();
-    Thread.sleep(3000);	
+    Thread.sleep(3000);
+	System.out.println("OK!");
+	System.out.println("Checking that Edit User page is opened...");
     //finding window with 'Edit User' title and go to it
         for (String handle : driver.getWindowHandles())
                 {
@@ -89,12 +101,14 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.id("birthday"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
-    }	
+    }
+	System.out.println("OK!");	
 	//logout
 	logout();
 	//login as created user
 	login("TestUserName","12345678");
 	//check that Account Details page is opened
+	System.out.println("Checking that Account Details page is opened...");	
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//div[@class=\"user_profile_menu\"]"))) break; } catch (Exception e) {}
@@ -104,19 +118,32 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//form[@id=\"userForm\"]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
-    }	
+    }
+	System.out.println("OK!");	
 	//logout
-	logout();	
+	logout();
+	
+	/* Removing created data */
+	
+	System.out.println("");	
+	System.out.println("--- Removing created data... ---");	
+	System.out.println("");		
 	//login as admin
 	loginAsAdmin();
     //removing of created user
 	removeUser("lyudmila_test_accountant@mail.ru");
     //logout
 	logout();
+	System.out.println("OK!");	
+	
+	/* Log out from email */
+	
+	System.out.println("Logging out from email...");	
 	//opening mail.ru site
     driver.get( "www.mail.ru");	
 	//log out from mail.ru
-    driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();	
+    driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();
+	System.out.println("OK!");	
   }
 
   private boolean isElementPresent(By by) {

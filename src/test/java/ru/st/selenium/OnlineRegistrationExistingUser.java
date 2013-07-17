@@ -17,7 +17,7 @@ public class OnlineRegistrationExistingUser extends ru.st.selenium.pages.TestBas
   @Test
   public void testOnlineRegistration() throws Exception {    
 
-	System.out.println("========== ONLINE REGISTRATION ==========");
+	System.out.println("========== ONLINE REGISTRATION BY EXISTING USER ==========");
 	driver.manage().window().maximize();
 
 	loginAsAdmin();
@@ -33,9 +33,13 @@ public class OnlineRegistrationExistingUser extends ru.st.selenium.pages.TestBas
 	}
 	
 public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean isNotedCheckbox)throws Exception {
-	System.out.println("Checking online registration...");
+	System.out.println("");
+	System.out.println("--- Checking online registration with next data: ---");
+	System.out.println("");
 	System.out.println("CONTRACT TYPE:     "+ContractType);
 	System.out.println("PROMO CODE:     "+PromoCode);
+	System.out.println("IS 'Use my account...' CHECKBOX NOTED?:     "+isNotedCheckbox);
+	System.out.println("");
 	//opening external registration page
 	driver.get(baseUrl+"merchant/signup");
 	//filling company data fields
@@ -250,12 +254,22 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
 	System.out.println("Checking that emails notifications were sent...");
 	//opening mail.ru site
     driver.get( "www.mail.ru");
+	
 	//going to test email
-    driver.findElement(By.id("mailbox__login")).clear();
-    driver.findElement(By.id("mailbox__login")).sendKeys("lyudmila_test_mm@mail.ru");	
-    driver.findElement(By.id("mailbox__password")).clear();
-    driver.findElement(By.id("mailbox__password")).sendKeys("test12345");
+	if (!isNotedCheckbox) {
+		driver.findElement(By.id("mailbox__login")).clear();
+		driver.findElement(By.id("mailbox__login")).sendKeys("lyudmila_test_mm@mail.ru");	
+		driver.findElement(By.id("mailbox__password")).clear();
+		driver.findElement(By.id("mailbox__password")).sendKeys("test12345");
+	} else {
+		driver.findElement(By.id("mailbox__login")).clear();
+		driver.findElement(By.id("mailbox__login")).sendKeys("lyudmila_test_operator@mail.ru");	
+		driver.findElement(By.id("mailbox__password")).clear();
+		driver.findElement(By.id("mailbox__password")).sendKeys("test12345");	
+
+	}	
     driver.findElement(By.id("mailbox__auth__button")).click();
+	
 	//checking that subject of first messages contains 'Payment Confirmation' text
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
@@ -448,10 +462,12 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
 	System.out.println("OK!");
 	
 	/* Removing created data */
-	System.out.println("Removing created data...");	
+	System.out.println("");	
+	System.out.println("--- Removing created data... ---");	
+	System.out.println("");		
 	loginAsAdmin();
 	removeBusiness("Auto Online Trading");
-	removeUser("lyudmila_test_mm@mail.ru");
+	if (!isNotedCheckbox) {	removeUser("lyudmila_test_mm@mail.ru");}
 	logout();
 	
 	System.out.println("OK!");	
