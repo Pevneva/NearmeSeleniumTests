@@ -269,39 +269,40 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
 
 	}	
     driver.findElement(By.id("mailbox__auth__button")).click();
-	
-	//checking that subject of first messages contains 'Payment Confirmation' text
-    for (int second = 0;; second++) {
+	//waiting until subject of 3rd notification will not be 'Registration in NearMe' text (2 emails will not be sent)
+	System.out.println("Taking subject of 3rd email and waiting until it will not be 'Registration in NearMe'... ");
+	String  S1="";
+	for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.xpath("//div[@id=\"ML0\"]/div[1]//span[contains(text(),'Payment Confirmation')]"))) break; } catch (Exception e) {}
+    	try { 
+			S1  = driver.findElement(By.xpath("//div[@id=\"ML0\"]/div[3]//span[contains(text(),'Registration in')]")).getText();
+			System.out.println("S1 = "+S1);
+			if (S1.equals("Registration in NearMe")) 
+			break; 
+			} catch (Exception e) {}
     	Thread.sleep(1000);
     }		
-	
 	//opening first messages
+	System.out.println("Opening first message...");
 	driver.findElement(By.cssSelector("span.messageline__body__name")).click();
-	//checking that subject contains 'Payment Confirmation ' text
-    for (int second = 0;; second++) {
-    	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.xpath("//div[@class=\"mr_read__top_in\"]//span[contains(text(),'Payment Confirmation ')]"))) break; } catch (Exception e) {}
-    	Thread.sleep(1000);
-    }	
-	//clicking on the 'Письма' link
-    driver.findElement(By.xpath("//a[@id=\"HeaderBtnCheckNewMsg\"]")).click();	
-	//checking that subject of second messages contains 'Welcome to NearMe' text
-    for (int second = 0;; second++) {
-    	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.xpath("//div[@id=\"ML0\"]/div[2]//span[contains(text(),'Welcome to NearMe')]"))) break; } catch (Exception e) {}
-    	Thread.sleep(1000);
-    }
-	System.out.println("OK!");		
+	System.out.println("OK!");	
+	//taking subject of email
+	System.out.println("Taking subject of first email...");	
+	S1= driver.findElement(By.xpath("//div[@id ='msgFieldSubject']//span[@class='val']")).getText();
+	System.out.println("OK!	   Subject = "+S1);	
+	if (checkResponse(S1,"Payment Confirmation")){
+		//clicking on the 'Письма' link
+		driver.findElement(By.xpath("//a[@id=\"HeaderBtnCheckNewMsg\"]")).click();
+		//opening second message		
+		System.out.println("Opening second message...");
+		driver.findElement(By.xpath("//div[@id=\"ML0\"]/div[2]//span[contains(text(),'Welcome to NearMe')]")).click();
+		System.out.println("OK!");		
+		}	
 	
 	if (!isNotedCheckbox) {
-		System.out.println("Opening email and going by activation link...");	
-		//opening second message
-		driver.findElement(By.xpath("//div[@id=\"ML0\"]/div[2]//span[contains(text(),'Welcome to NearMe')]")).click();
 		//clicking on the 'click here' link
+		System.out.println("Clicking on the 'click here' link...");			
 		driver.findElement(By.linkText("click here")).click();
-
 		//finding window with 'Complete Business Registration' title and go to it
 		for (String handle : driver.getWindowHandles())
 			{
@@ -313,13 +314,14 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
 		login("Consumer","12345678");
 	}
 
-	System.out.println("Completing final registration step...");	
 	//checking that 'Complete Business Registration' page was opened
+	System.out.println("Completing final registration step...");	
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//h1[contains(text(),'Complete Business Registration')]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
-    }	
+    }
+    Thread.sleep(2000);	
 	//filling of empty fields
 	driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).clear();
     driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).sendKeys("Job Title");

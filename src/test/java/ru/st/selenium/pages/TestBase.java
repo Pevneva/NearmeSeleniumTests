@@ -86,7 +86,7 @@ public class TestBase {
 	}
 
 	public void login(String UserName, String Password) throws Exception {
-		System.out.println("Logging in as" + UserName + " user...");
+		System.out.println("Logging in as " + UserName + " user...");
 		driver.get(baseUrl + "login");
 		driver.findElement(By.id("username")).clear();
 		driver.findElement(By.id("username")).sendKeys(UserName);
