@@ -261,7 +261,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	System.out.println("Taking subject of first email...");	
 	S1= driver.findElement(By.xpath("//div[@id ='msgFieldSubject']//span[@class='val']")).getText();
 	System.out.println("OK!	   Subject = "+S1);	
-	if (checkResponse(S1,"Payment Confirmation")){
+	if (S1.contains("Payment Confirmation")){
 		//clicking on the 'Письма' link
 		driver.findElement(By.xpath("//a[@id=\"HeaderBtnCheckNewMsg\"]")).click();
 		//opening second message		
