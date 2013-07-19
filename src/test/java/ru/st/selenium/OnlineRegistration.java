@@ -127,7 +127,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	checkStartPage();
 	System.out.println("OK!");
 	//opening mail.ru site
-	System.out.println("Going to mail.ru and checking that 'Regisrtation in NearMe' email was sent...");	
+	System.out.println("Going to mail.ru and logging in as lyudmila_test_mm@mail.ru user...");	
     driver.get( "www.mail.ru");
 	//going to test email
     driver.findElement(By.id("mailbox__login")).clear();
@@ -135,21 +135,29 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     driver.findElement(By.id("mailbox__password")).clear();
     driver.findElement(By.id("mailbox__password")).sendKeys("test12345");
     driver.findElement(By.id("mailbox__auth__button")).click();
+	System.out.println("OK!");	
+	System.out.println("Checking that 'Regisrtation in NearMe' email was sent...");	
 	//checking that subject of first messages contains 'Registration in NearMe' text
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//div[@id=\"ML0\"]/div[1]//span[contains(text(),'Registration in NearMe')]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
-    }	
+    }
+	System.out.println("OK!");		
 	//opening first messages
+	System.out.println("Opening first messages...");		
 	driver.findElement(By.cssSelector("span.messageline__body__name")).click();
+	System.out.println("OK!");	
 	//checking that subject contains 'Registration in NearMe' text
+	System.out.println("Checking that subject contains 'Registration in NearMe' text...");	
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//div[@class=\"mr_read__top_in\"]//span[contains(text(),'Registration in NearMe')]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
+	System.out.println("OK!");	
 	//log out from 'lyudmila_test_mm@mail.ru' email
+	System.out.println("Logging out from 'lyudmila_test_mm@mail.ru' email");	
     driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();	
 	System.out.println("OK!");
 	
@@ -282,16 +290,21 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	
 	/*  Completing final registration step */
 
-	System.out.println("Completing final registration step...");	
+	System.out.println("--- Completing final registration step... ---");	
 	//checking that 'Complete Business Registration' page was opened
+	System.out.println("Checking that 'Complete Business Registration' page was opened...");	
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.xpath("//h1[contains(text(),'Complete Business Registration')]"))) break; } catch (Exception e) {}
+    //	try { if (isElementPresent(By.xpath("//h1[contains(text(),'Complete Business Registration')]"))) break; } catch (Exception e) {}
+    	try { if (isElementPresent(By.xpath("//input[@id='managers[0].firstName']"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
-    }	
+    }
+//https://stage.getnearme.com/merchant/completeRegistration	
+	System.out.println("OK!");		
 	//filling of empty fields
+	System.out.println("Filling of empty fields...");		
 	driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).clear();
-    driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).sendKeys("Job Title");
+    driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).sendKeys("Job Title");     
     driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.nationalInsuranceNo")).clear();
     driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.nationalInsuranceNo")).sendKeys("NatInsNo");
     driver.findElement(By.id("managers[0].contact.telephone")).clear();
@@ -330,23 +343,32 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     driver.findElement(By.id("keywords.ti1")).clear();
     driver.findElement(By.id("keywords.ti1")).sendKeys("keyword001");
     driver.findElement(By.id("keywords.ti1")).click();
+	System.out.println("OK!");	
 	//clicking on the "Continue" button
+	System.out.println("Clicking on the Continue button...");	
     driver.findElement(By.name("_action_save")).click();
 	//waiting until new page was not opened
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//div[@class=\"period_item\"]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
-    }	
+    }
+	System.out.println("OK!");		
 	//clicking on the "Use Company Details" button
+	System.out.println("Clicking on the 'Use Company Details' button...");		
     driver.findElement(By.id("copyCompanyDetailsButton")).click();
+	System.out.println("OK!");	
 	//clicking on the "Use Contact Details" button	
+	System.out.println("Clicking on the 'Use Contact Details' button...");	
     driver.findElement(By.id("copyContactDetailsButton")).click();
+	System.out.println("OK!");		
 	//filling "Url Name" filed
+	System.out.println("Filling \"Url Name\" filed...");		
     driver.findElement(By.id("displayName")).sendKeys("venue001");
-
+	System.out.println("OK!");
 	
 	/* Filling Opening Hours forms */	
+	System.out.println("Filling Opening Hours forms...");
 	
 	//noting by tick 'I'd like to enter two sets of hours for a single day.' select box	
     driver.findElement(By.id("splitHours")).click();
@@ -378,9 +400,10 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     new Select(driver.findElement(By.id("openingHours.additional.1.Monday.from_hour"))).selectByVisibleText("15:00");
 	//selecting '19:00' in 'Close' select box for Monday for second case
     new Select(driver.findElement(By.id("openingHours.additional.1.Monday.to_hour"))).selectByVisibleText("19:30");	
-	
+	System.out.println("OK!");	
 
 	/* Filling Holidays forms */
+	System.out.println("Filling Holidays forms...");	
 
 	//filling 'From' input field for Holiday1
     driver.findElement(By.id("holiday.0.periodFrom")).sendKeys("12/06/13");
@@ -396,6 +419,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     driver.findElement(By.id("holiday.1.periodTo")).sendKeys("30/06/13");	
 	//entering Holiday name
     driver.findElement(By.id("holiday.1.name")).sendKeys("Holiday2");
+	System.out.println("OK!");	
 
 	/* Adding Additional Info */
 	
