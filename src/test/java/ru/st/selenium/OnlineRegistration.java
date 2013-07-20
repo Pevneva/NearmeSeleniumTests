@@ -144,18 +144,26 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     	try { if (isElementPresent(By.xpath("//div[@id=\"ML0\"]/div[1]//span[contains(text(),'Registration in NearMe')]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
-	System.out.println("OK!");		
+	System.out.println("OK!");
+	//waiting until subject of first message will not be 'Registration in NearMe'	
+//	System.out.println("Waiting until subject of first message will not be 'Registration in NearMe'...");
+ //   for (int second = 0;; second++) {
+ //   	if (second >= 60) fail("timeout");
+ //   	try { if (isElementPresent(By.xpath("//div[@id=\"ML0\"]/div[1]//span[contains(text(),'Registration in NearMe')]"))) break; } catch (Exception e) {}		
+ //   	Thread.sleep(1000);
+ //   }	
+//	System.out.println("OK!");	
 	//opening first messages
 	System.out.println("Opening first messages...");		
-	driver.findElement(By.cssSelector("span.messageline__body__name")).click();
+	driver.findElement(By.xpath("//div[@id=\"ML0\"]/div[1]//span[contains(text(),'Registration in NearMe')]")).click();
 	System.out.println("OK!");	
 	//checking that subject contains 'Registration in NearMe' text
-	System.out.println("Checking that subject contains 'Registration in NearMe' text...");	
-    for (int second = 0;; second++) {
-    	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.xpath("//div[@class=\"mr_read__top_in\"]//span[contains(text(),'Registration in NearMe')]"))) break; } catch (Exception e) {}
-    	Thread.sleep(1000);
-    }
+//	System.out.println("Checking that subject contains 'Registration in NearMe' text...");	
+//    for (int second = 0;; second++) {
+//    	if (second >= 60) fail("timeout");
+ //   	try { if (isElementPresent(By.xpath("//div[@class=\"mr_read__top_in\"]//span[contains(text(),'Registration in NearMe')]"))) break; } catch (Exception e) {}
+ //   	Thread.sleep(1000);
+ //   }
 	System.out.println("OK!");	
 	//log out from 'lyudmila_test_mm@mail.ru' email
 	System.out.println("Logging out from 'lyudmila_test_mm@mail.ru' email");	
@@ -267,9 +275,9 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { 
-			S1  = driver.findElement(By.xpath("//div[@id=\"ML0\"]/div[2]//span[contains(text(),'Registration in')]")).getText();
+			S1  = driver.findElement(By.xpath("//div[@id=\"ML0\"]/div[2]//span[contains(text(),'')]")).getText();
 			System.out.println("S1 = "+S1);
-			if (!S1.equals("Registration in NearMe")) 
+			if (!S1.contains("Registration in NearMe")) 
 			break; 
 			} catch (Exception e) {}
     	Thread.sleep(1000);
