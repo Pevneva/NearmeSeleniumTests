@@ -264,7 +264,6 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     }	
 	//waiting until subject of 2rd notification will NOT be 'Registration in NearMe' text 
 	System.out.println("Taking subject of 2rd message of lyudmila_test_mm@mail.ru email and waiting until it will NOT be 'Registration in NearMe'... ");
-	String  S1="";
 	for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { 

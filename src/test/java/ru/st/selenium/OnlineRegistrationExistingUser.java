@@ -288,7 +288,6 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
     }
 	//waiting until subject of 2rd notification will NOT be 'Registration in NearMe' text 
 	System.out.println("Taking subject of 3rd email and waiting until it will not be 'Registration in NearMe'... ");
-	String  S1="";
 	for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { 
