@@ -135,7 +135,8 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     driver.findElement(By.id("mailbox__password")).clear();
     driver.findElement(By.id("mailbox__password")).sendKeys("test12345");
     driver.findElement(By.id("mailbox__auth__button")).click();
-	System.out.println("OK!");	
+	System.out.println("OK!");
+	Thread.sleep(2000);	
 	System.out.println("Checking that 'Regisrtation in NearMe' email was sent...");	
 	//checking that subject of first messages contains 'Registration in NearMe' text
     for (int second = 0;; second++) {
@@ -239,7 +240,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 
 	/* Checking that emails notifications were sent */
 
-	System.out.println("Checking that emails notifications were sent...");
+	System.out.println("Checking that emails notifications were sent to lyudmila_test_mm@mail.ru...");
 	//opening mail.ru site
     driver.get( "www.mail.ru");
 	//going to test email
@@ -249,7 +250,7 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
     driver.findElement(By.id("mailbox__password")).sendKeys("test12345");
     driver.findElement(By.id("mailbox__auth__button")).click();
 	//waiting until subject of 3rd notification will not be 'Registration in NearMe' text (2 emails will not be sent)
-	System.out.println("Taking subject of 3rd email and waiting until it will not be 'Registration in NearMe'... ");
+	System.out.println("Taking subject of 3rd message of lyudmila_test_mm@mail.ru email and waiting until it will not be 'Registration in NearMe'... ");
 	String  S1="";
 	for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
@@ -257,6 +258,19 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 			S1  = driver.findElement(By.xpath("//div[@id=\"ML0\"]/div[3]//span[contains(text(),'Registration in')]")).getText();
 			System.out.println("S1 = "+S1);
 			if (S1.equals("Registration in NearMe")) 
+			break; 
+			} catch (Exception e) {}
+    	Thread.sleep(1000);
+    }	
+	//waiting until subject of 2rd notification will NOT be 'Registration in NearMe' text 
+	System.out.println("Taking subject of 2rd message of lyudmila_test_mm@mail.ru email and waiting until it will NOT be 'Registration in NearMe'... ");
+	String  S1="";
+	for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { 
+			S1  = driver.findElement(By.xpath("//div[@id=\"ML0\"]/div[2]//span[contains(text(),'Registration in')]")).getText();
+			System.out.println("S1 = "+S1);
+			if (!S1.equals("Registration in NearMe")) 
 			break; 
 			} catch (Exception e) {}
     	Thread.sleep(1000);
@@ -361,7 +375,8 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 	//clicking on the "Use Contact Details" button	
 	System.out.println("Clicking on the 'Use Contact Details' button...");	
     driver.findElement(By.id("copyContactDetailsButton")).click();
-	System.out.println("OK!");		
+	System.out.println("OK!");
+	Thread.sleep(1000);
 	//filling "Url Name" filed
 	System.out.println("Filling \"Url Name\" filed...");		
     driver.findElement(By.id("displayName")).sendKeys("venue001");

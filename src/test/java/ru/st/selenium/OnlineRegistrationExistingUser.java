@@ -140,7 +140,6 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
 		try { if (isElementPresent(By.id("firstName"))) break; } catch (Exception e) {}
 		Thread.sleep(1000);
 	}			
-	
 	System.out.println("OK!");
 	logout();
 
@@ -158,19 +157,24 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
 		driver.findElement(By.id("mailbox__login")).sendKeys("lyudmila_test_operator@mail.ru");	
 		driver.findElement(By.id("mailbox__password")).clear();
 		driver.findElement(By.id("mailbox__password")).sendKeys("test12345");	
-
 	}
 		
 	driver.findElement(By.id("mailbox__auth__button")).click();
+	Thread.sleep(2000);		
 	//checking that subject of first messages contains 'Registration in NearMe' text
+	System.out.println("Checking that 'Regisrtation in NearMe' email was sent...");		
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//div[@id=\"ML0\"]/div[1]//span[contains(text(),'Registration in NearMe')]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
-    }	
+    }
+	System.out.println("OK!");	
 	//opening first messages
+	System.out.println("Opening first messages...");		
 	driver.findElement(By.cssSelector("span.messageline__body__name")).click();
+	System.out.println("OK!");
 	//log out from 'lyudmila_test_mm@mail.ru' email
+	System.out.println("Logged out from 'lyudmila_test_mm@mail.ru' email");	
     driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();	
 	System.out.println("OK!");
 	
@@ -281,7 +285,20 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
 			break; 
 			} catch (Exception e) {}
     	Thread.sleep(1000);
-    }		
+    }
+	//waiting until subject of 2rd notification will NOT be 'Registration in NearMe' text 
+	System.out.println("Taking subject of 3rd email and waiting until it will not be 'Registration in NearMe'... ");
+	String  S1="";
+	for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { 
+			S1  = driver.findElement(By.xpath("//div[@id=\"ML0\"]/div[2]//span[contains(text(),'Registration in')]")).getText();
+			System.out.println("S1 = "+S1);
+			if (!S1.equals("Registration in NearMe")) 
+			break; 
+			} catch (Exception e) {}
+    	Thread.sleep(1000);
+    }	
 	//opening first messages
 	System.out.println("Opening first message...");
 	driver.findElement(By.cssSelector("span.messageline__body__name")).click();
@@ -318,11 +335,14 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
 	System.out.println("Completing final registration step...");	
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.xpath("//h1[contains(text(),'Complete Business Registration')]"))) break; } catch (Exception e) {}
+    	//try { if (isElementPresent(By.xpath("//h1[contains(text(),'Complete Business Registration')]"))) break; } catch (Exception e) {}
+    	try { if (isElementPresent(By.xpath("//input[@id='managers[0].firstName']"))) break; } catch (Exception e) {}		
     	Thread.sleep(1000);
     }
+	System.out.println("OK!");	
     Thread.sleep(2000);	
 	//filling of empty fields
+	System.out.println("Filling of empty fields...");	
 	driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).clear();
     driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).sendKeys("Job Title");
     driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.nationalInsuranceNo")).clear();
@@ -363,7 +383,9 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
     driver.findElement(By.id("keywords.ti1")).clear();
     driver.findElement(By.id("keywords.ti1")).sendKeys("keyword001");
     driver.findElement(By.id("keywords.ti1")).click();
+	System.out.println("OK!");	
 	//clicking on the "Continue" button
+	System.out.println("Clicking on the Continue button...");	
     driver.findElement(By.name("_action_save")).click();
 	//waiting until new page was not opened
     for (int second = 0;; second++) {
@@ -371,15 +393,23 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
     	try { if (isElementPresent(By.xpath("//div[@class=\"period_item\"]"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }	
+	System.out.println("OK!");		
 	//clicking on the "Use Company Details" button
+	System.out.println("Clicking on the 'Use Company Details' button...");
     driver.findElement(By.id("copyCompanyDetailsButton")).click();
+	System.out.println("OK!");	
 	//clicking on the "Use Contact Details" button	
+	System.out.println("Clicking on the 'Use Contact Details' button...");		
     driver.findElement(By.id("copyContactDetailsButton")).click();
+	System.out.println("OK!");		
+	Thread.sleep(1000);
 	//filling "Url Name" filed
+	System.out.println("Filling \"Url Name\" filed...");
     driver.findElement(By.id("displayName")).sendKeys("venue001");
-
+	System.out.println("OK!");
 	
-	/* Filling Opening Hours forms */	
+	/* Filling Opening Hours forms */
+	System.out.println("Filling Opening Hours forms...");	
 	
 	//noting by tick 'I'd like to enter two sets of hours for a single day.' select box	
     driver.findElement(By.id("splitHours")).click();
@@ -411,9 +441,10 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
     new Select(driver.findElement(By.id("openingHours.additional.1.Monday.from_hour"))).selectByVisibleText("15:00");
 	//selecting '19:00' in 'Close' select box for Monday for second case
     new Select(driver.findElement(By.id("openingHours.additional.1.Monday.to_hour"))).selectByVisibleText("19:30");	
-	
+	System.out.println("OK!");	
 
 	/* Filling Holidays forms */
+	System.out.println("Filling Holidays forms...");
 
 	//filling 'From' input field for Holiday1
     driver.findElement(By.id("holiday.0.periodFrom")).sendKeys("12/06/13");
@@ -429,7 +460,8 @@ public void OnlineRegistrWithUser(String ContractType, String PromoCode, boolean
     driver.findElement(By.id("holiday.1.periodTo")).sendKeys("30/06/13");	
 	//entering Holiday name
     driver.findElement(By.id("holiday.1.name")).sendKeys("Holiday2");
-
+	System.out.println("OK!");
+	
 	/* Adding Additional Info */
 	
 	//selecting 'Sky Sports' value
