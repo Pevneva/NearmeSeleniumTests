@@ -479,13 +479,14 @@ public void clickClickHereLinkAndFindCompleteBRwindow()throws Exception {
 	System.out.println("Clicking on the 'click here' link...");	
     driver.findElement(By.linkText("click here")).click();
     //finding window with 'Complete Business Registration' title and go to it
+	Thread.sleep(5000);	
     for (String handle : driver.getWindowHandles())
        {
        driver.switchTo().window(handle);
-	   Thread.sleep(2000);
+	   Thread.sleep(3000);
        if (driver.getTitle().equals("Complete Business Registration")){break;};
        }
-	Thread.sleep(2000);	   
+	Thread.sleep(3000);	   
 	System.out.println("OK!");	
 }
 
