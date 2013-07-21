@@ -528,7 +528,7 @@ public void finalRegistrationStepOfOnlineRegistration() throws Exception {
 	System.out.println("Region...");	
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.id("registeredAddress.region"))) break; } catch (Exception e) {}
+    	try { if (isElementPresent(By.xpath("//*[@id='registeredAddress.region']/*[@value='London']"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
     new Select(driver.findElement(By.id("registeredAddress.region"))).selectByVisibleText("London");
@@ -536,7 +536,7 @@ public void finalRegistrationStepOfOnlineRegistration() throws Exception {
 	System.out.println("County...");
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
-    	try { if (isElementPresent(By.id("registeredAddress.county"))) break; } catch (Exception e) {}
+    	try { if (isElementPresent(By.xpath("//*[@id='registeredAddress.county']/*[@value='Dorset']"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
     new Select(driver.findElement(By.id("registeredAddress.county"))).selectByVisibleText("Dorset");
