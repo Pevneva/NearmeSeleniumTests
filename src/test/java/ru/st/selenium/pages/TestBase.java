@@ -504,24 +504,44 @@ public void finalRegistrationStepOfOnlineRegistration() throws Exception {
     }
 	System.out.println("OK!");		
 	//filling of empty fields
-	System.out.println("Filling of empty fields...");		
+	System.out.println("Filling of empty fields:");		
+	System.out.println("Job Title...");		
 	driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).clear();
-    driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).sendKeys("Job Title");     
+    driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.jobTitle")).sendKeys("Job Title"); 
+	System.out.println("OK!");
+    System.out.println("National Insurance No...");	
     driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.nationalInsuranceNo")).clear();
     driver.findElement(By.id("managers[0].merchantManagerRoleDefinition.nationalInsuranceNo")).sendKeys("NatInsNo");
+	System.out.println("OK!");
+    System.out.println("Telephone...");		
     driver.findElement(By.id("managers[0].contact.telephone")).clear();
     driver.findElement(By.id("managers[0].contact.telephone")).sendKeys("2220010");
+	System.out.println("OK!");
+    System.out.println("Mobile...");		
     driver.findElement(By.id("managers[0].contact.mobile")).clear();
     driver.findElement(By.id("managers[0].contact.mobile")).sendKeys("334455");
+	System.out.println("OK!");
+	System.out.println("Company No...");
     driver.findElement(By.id("registeredCompanyNo")).clear();
     driver.findElement(By.id("registeredCompanyNo")).sendKeys("companyNo");
+	System.out.println("OK!");
+	System.out.println("Region...");	
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.id("registeredAddress.region"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }
     new Select(driver.findElement(By.id("registeredAddress.region"))).selectByVisibleText("London");
+	System.out.println("OK!");
+	System.out.println("County...");
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.id("registeredAddress.county"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
     new Select(driver.findElement(By.id("registeredAddress.county"))).selectByVisibleText("Dorset");
+	System.out.println("OK!");
+	System.out.println("Contact Details...");
     driver.findElement(By.id("companyContactDetails.telephone")).clear();
     driver.findElement(By.id("companyContactDetails.telephone")).sendKeys("100001");
     driver.findElement(By.id("companyContactDetails.fax")).clear();
@@ -540,8 +560,12 @@ public void finalRegistrationStepOfOnlineRegistration() throws Exception {
     driver.findElement(By.id("companyContactDetails.instagram")).sendKeys("http://www.instagram.com");
     driver.findElement(By.id("companyContactDetails.pinterest")).clear();
     driver.findElement(By.id("companyContactDetails.pinterest")).sendKeys("http://www.pinterest.com");
+	System.out.println("OK!");
+	System.out.println("Category...");
     driver.findElement(By.xpath("//fieldset[6]//ul/li[contains(text(),\"Candy Shop\")]")).click();
     driver.findElement(By.cssSelector("button.plus_btn")).click();
+	System.out.println("OK!");
+	System.out.println("Keywords...");
     driver.findElement(By.id("keywords.ti1")).clear();
     driver.findElement(By.id("keywords.ti1")).sendKeys("keyword001");
     driver.findElement(By.id("keywords.ti1")).click();
