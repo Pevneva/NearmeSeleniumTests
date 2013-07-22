@@ -534,6 +534,7 @@ public void finalRegistrationStepOfOnlineRegistration() throws Exception {
     new Select(driver.findElement(By.id("registeredAddress.region"))).selectByVisibleText("London");
 	System.out.println("OK!");
 	System.out.println("County...");
+	Thread.sleep(1000);
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//*[@id='registeredAddress.county']/*[@value='Dorset']"))) break; } catch (Exception e) {}
