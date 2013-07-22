@@ -46,7 +46,7 @@ public class SignUpWithFacebook extends ru.st.selenium.pages.TestBase {
 	driver.findElement(By.id("pass")).sendKeys("test12345");
 	Thread.sleep(1000);
 	driver.findElement(By.id("u_0_1")).click();
-	Thread.sleep(10000);
+	Thread.sleep(60000);
 	//checking that Facebook Sign Up page was opened
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
