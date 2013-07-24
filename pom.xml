@@ -108,7 +108,7 @@
 				<user.password></user.password>
 				<grid2.hub></grid2.hub>
 				<site.url>https://stage.getnearme.com/</site.url>
-				<browser.name></browser.name>
+				<browser.name>firefox</browser.name>
 				<browser.version></browser.version>
 				<browser.platform></browser.platform>
 			</properties>
