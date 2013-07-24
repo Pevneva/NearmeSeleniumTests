@@ -368,6 +368,138 @@ public void checkFirstEmailOfOnlineRegistration(String mailruEmail) throws Excep
 	System.out.println("OK!");
 }
 
+public void addVenue() throws Exception{
+	System.out.println("--------------------");
+	System.out.println("Adding venue...");
+	System.out.println("--------------------");
+	//filling Venue Details section
+	System.out.println("Filling Venue Details section...");
+    driver.findElement(By.id("displayName")).clear();
+    driver.findElement(By.id("displayName")).sendKeys("venue_test");
+    driver.findElement(By.id("advKey")).clear();
+    driver.findElement(By.id("advKey")).sendKeys("Adv Computer");
+    driver.findElement(By.id("tradingName")).clear();
+    driver.findElement(By.id("tradingName")).sendKeys("Computer House");
+	System.out.println("OK!");	
+	//filling Venue Address section
+	System.out.println("Filling Venue Address section...");	
+    new Select(driver.findElement(By.id("location.countryCode"))).selectByVisibleText("Belarus");
+    driver.findElement(By.id("location.city")).clear();
+    driver.findElement(By.id("location.city")).sendKeys("Minsk");
+    driver.findElement(By.id("location.address1")).clear();
+    driver.findElement(By.id("location.address1")).sendKeys("Lobanka 88");
+	System.out.println("OK!");
+	//filling Contact Details section
+	System.out.println("Filling Contact Details section...");		
+    driver.findElement(By.id("contact.telephone")).clear();
+    driver.findElement(By.id("contact.telephone")).sendKeys("+375 29 545 66 91");
+    driver.findElement(By.id("contact.fax")).clear();
+    driver.findElement(By.id("contact.fax")).sendKeys("545 66 91");
+    driver.findElement(By.id("contact.email")).clear();
+    driver.findElement(By.id("contact.email")).sendKeys("email001@com.com");
+    driver.findElement(By.id("contact.websiteUrl")).clear();
+    driver.findElement(By.id("contact.websiteUrl")).sendKeys("http://www.website001.com");
+	System.out.println("(Social Links)");
+    driver.findElement(By.id("contact.facebook")).clear();
+    driver.findElement(By.id("contact.facebook")).sendKeys("http://www.facebook001.com");
+    driver.findElement(By.id("contact.twitter")).clear();
+    driver.findElement(By.id("contact.twitter")).sendKeys("http://www.twitter001.com");
+    driver.findElement(By.id("contact.foursquare")).clear();
+    driver.findElement(By.id("contact.foursquare")).sendKeys("http://www.foursquare001.com");
+    driver.findElement(By.id("contact.instagram")).clear();
+    driver.findElement(By.id("contact.instagram")).sendKeys("http://www.instagram.com");
+    driver.findElement(By.id("contact.pinterest")).clear();
+    driver.findElement(By.id("contact.pinterest")).sendKeys("http://www.pinterest.com");
+	System.out.println("OK!");
+    driver.findElement(By.name("_action_saveDetails")).click();
+	System.out.println("Category...");
+    driver.findElement(By.xpath("//fieldset[1]//ul/li[contains(text(),\"Computer Shop\")]")).click();
+    driver.findElement(By.cssSelector("button.plus_btn")).click();
+	System.out.println("OK!");
+	/* Filling Opening Hours forms */	
+	System.out.println("Filling Opening Hours forms...");
+	
+	//noting by tick 'I'd like to enter two sets of hours for a single day.' select box	
+    driver.findElement(By.id("splitHours")).click();
+	//filling 'From' input field for Timetable1
+    driver.findElement(By.id("0.periodFrom")).sendKeys("02/06/13");
+	//filling 'To' input field for Timetable2
+    driver.findElement(By.id("0.periodTo")).sendKeys("08/06/13");
+	//selecting '8:00' in 'Open' select box for Monday in first case
+    new Select(driver.findElement(By.id("openingHours.main.0.Monday.from_hour"))).selectByVisibleText("08:00");
+	//selecting '17:30' in 'Close' select box for Monday for first case
+    new Select(driver.findElement(By.id("openingHours.main.0.Monday.to_hour"))).selectByVisibleText("17:30");
+	//checking 'Closed' check box for Sunday
+    driver.findElement(By.id("closedSunday0Period")).click();
+	//checking '24 Hours' check box for Saterday
+    driver.findElement(By.id("fullDaySaturday0Period")).click();
+	//noting by tick 'Note: Uncheck to edit hours individually for each day' checkbox
+    driver.findElement(By.id("selectHoursSync")).click();
+	//adding Timetable2
+    driver.findElement(By.id("add_period_item")).click();
+	//filling 'From' input field for Timetable1
+    driver.findElement(By.id("0.periodFrom")).sendKeys("09/06/13");
+	//filling 'To' input field for Timetable2
+    driver.findElement(By.id("0.periodTo")).sendKeys("15/06/13");
+	//selecting '10:00' in 'Open' select box for Monday in first case
+    new Select(driver.findElement(By.id("openingHours.main.1.Monday.from_hour"))).selectByVisibleText("10:00");
+	//selecting '14:00' in 'Close' select box for Monday for first case
+    new Select(driver.findElement(By.id("openingHours.main.1.Monday.to_hour"))).selectByVisibleText("17:30");
+	//selecting '15:00' in 'Open' select box for Monday in second case
+    new Select(driver.findElement(By.id("openingHours.additional.1.Monday.from_hour"))).selectByVisibleText("15:00");
+	//selecting '19:00' in 'Close' select box for Monday for second case
+    new Select(driver.findElement(By.id("openingHours.additional.1.Monday.to_hour"))).selectByVisibleText("19:30");	
+	System.out.println("OK!");	
+
+	/* Filling Holidays forms */
+	System.out.println("Filling Holidays forms...");	
+
+	//filling 'From' input field for Holiday1
+    driver.findElement(By.id("holiday.0.periodFrom")).sendKeys("12/06/13");
+	//filling 'To' input field for Holiday1
+    driver.findElement(By.id("holiday.0.periodTo")).sendKeys("13/06/13");	
+	//entering Holiday name
+    driver.findElement(By.id("holiday.0.name")).sendKeys("Holiday1");
+	System.out.println("OK!");
+	//clicking on the 'Add another holiday period' link
+	System.out.println("Clicking on the 'Add another holiday period' link...");	
+    driver.findElement(By.id("add_holiday_item")).click();
+	System.out.println("OK!");
+	System.out.println("Filling Second Holidays forms...");	
+	//filling 'From' input field for Holiday1
+    driver.findElement(By.id("holiday.1.periodFrom")).sendKeys("20/06/13");
+	//filling 'To' input field for Holiday1
+    driver.findElement(By.id("holiday.1.periodTo")).sendKeys("30/06/13");	
+	//entering Holiday name
+    driver.findElement(By.id("holiday.1.name")).sendKeys("Holiday2");
+	System.out.println("OK!");	
+
+	/* Adding Additional Info */
+	
+	//selecting 'Play Area' value
+	System.out.println("Selecting 'Play Area' value...");
+    new Select(driver.findElement(By.id("infos.type.0"))).selectByVisibleText("Play Area");	
+	System.out.println("OK!");
+	//clicking on the 'Add additional info' link
+	System.out.println("Clicking on the 'Add additional info' link...");	 
+	driver.findElement(By.id("add_info")).click();
+	System.out.println("OK!");
+	//clicking on the "Finish" button
+	System.out.println("Clickingon the \"Finish\" button...");	
+    driver.findElement(By.name("_action_save")).click();
+	System.out.println("OK!");	
+	//checking that venue page will be opened
+	System.out.println("Checking that venue page will be opened...");
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.xpath("//div[@class=\"photo_video\"]"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }
+	System.out.println("OK!");
+	System.out.println("VENUE WAS CREATED!");
+	System.out.println("--------------------");
+}
+
 public void checkSecondEmailOfOnlineRegistration(String mailruEmail)throws Exception{
 	/* Checking that emails notifications were sent */
 
@@ -534,7 +666,6 @@ public void finalRegistrationStepOfOnlineRegistration() throws Exception {
     new Select(driver.findElement(By.id("registeredAddress.region"))).selectByVisibleText("London");
 	System.out.println("OK!");
 	System.out.println("County...");
-	Thread.sleep(1000);
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//*[@id='registeredAddress.county']/*[@value='Dorset']"))) break; } catch (Exception e) {}
