@@ -88,26 +88,26 @@
 			</activation>
 		</profile>
 		<profile>
-			<id>dev</id>
-			<properties>
-				<env>dev</env>
-				<user.username></user.username>
-				<user.password></user.password>
-				<grid2.hub></grid2.hub>
-				<site.url></site.url>
-				<browser.name></browser.name>
-				<browser.version></browser.version>
-				<browser.platform></browser.platform>
-			</properties>
-		</profile>
-		<profile>
 			<id>test</id>
 			<properties>
 				<env>test</env>
 				<user.username></user.username>
 				<user.password></user.password>
 				<grid2.hub></grid2.hub>
-				<site.url></site.url>
+				<site.url>http://95.110.204.46/nearme-portal</site.url>
+				<browser.name></browser.name>
+				<browser.version></browser.version>
+				<browser.platform></browser.platform>
+			</properties>
+		</profile>
+		<profile>
+			<id>stage</id>
+			<properties>
+				<env>stage</env>
+				<user.username></user.username>
+				<user.password></user.password>
+				<grid2.hub></grid2.hub>
+				<site.url>https://stage.getnearme.com/</site.url>
 				<browser.name></browser.name>
 				<browser.version></browser.version>
 				<browser.platform></browser.platform>
