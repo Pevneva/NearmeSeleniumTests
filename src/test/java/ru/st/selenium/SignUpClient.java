@@ -42,7 +42,7 @@ public class SignUpClient extends ru.st.selenium.pages.TestBase {
 		
 		//Executing API Sign Up process
 		System.out.println("Executing API Sign Up process...");
-		String signupUri=baseUrl+"/api/v1/signup?hash=3/3sVlGXuPb/IYUqbflui5DwjgIEJHAtCcYoJGrefVE=&email=lyudmila_test_03@mail.ru";
+		String signupUri=baseUrl+"api/v1/signup?hash=3/3sVlGXuPb/IYUqbflui5DwjgIEJHAtCcYoJGrefVE=&email=lyudmila_test_03@mail.ru";
 		respBody=postRequest(signupUri);
 		System.out.println("Response:");
 		System.out.println(respBody);
