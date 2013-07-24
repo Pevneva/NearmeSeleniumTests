@@ -95,7 +95,7 @@
 				<user.password></user.password>
 				<grid2.hub></grid2.hub>
 				<site.url>http://95.110.204.46/nearme-portal</site.url>
-				<browser.name></browser.name>
+				<browser.name>firefox</browser.name>
 				<browser.version></browser.version>
 				<browser.platform></browser.platform>
 			</properties>
