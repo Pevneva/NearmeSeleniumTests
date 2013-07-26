@@ -671,7 +671,7 @@ public void finalRegistrationStepOfOnlineRegistration() throws Exception {
     	try { if (isElementPresent(By.xpath("//*[@id='registeredAddress.county']/*[@value='Dorset']"))) break; } catch (Exception e) {}
     	Thread.sleep(1000);
     }
-	Thread.sleep(1000);
+	Thread.sleep(3000);
     new Select(driver.findElement(By.id("registeredAddress.county"))).selectByVisibleText("Dorset");
 	System.out.println("OK!");
 	System.out.println("Contact Details...");
