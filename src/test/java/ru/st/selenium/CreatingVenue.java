@@ -15,7 +15,7 @@ public class CreatingVenue extends ru.st.selenium.pages.TestBase {
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Test
-  public void testCreatingBusiness() throws Exception {    
+  public void testCreatingVenue() throws Exception {    
 	String TradName="";
 	
 	System.out.println("========== ADMIN CREATING VENUE ==========");	

@@ -31,6 +31,8 @@ public class SignUpClient extends ru.st.selenium.pages.TestBase {
   @Test
   public void testSignUpClient() throws Exception { 
 
+		System.out.println("========================================");  
+		System.out.println("");    
 		System.out.println("========== SIGN UP CLIENT ==========");  
 		driver.manage().window().maximize();
 		
@@ -98,6 +100,11 @@ public class SignUpClient extends ru.st.selenium.pages.TestBase {
 		System.out.println("Response:");
 		System.out.println(respBody);
 		checkResponse(respBody,"\"message\": \"Password successfully changed and sent to User's email\"");
+		
+		System.out.println("===== SIGN UP CLIENT TEST WAS COMPLETED! ====="); 
+		System.out.println(""); 
+		System.out.println("========================================"); 
+		
 	}
    
   private boolean isElementPresent(By by) {

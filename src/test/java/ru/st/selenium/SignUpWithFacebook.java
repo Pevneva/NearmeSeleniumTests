@@ -17,6 +17,8 @@ public class SignUpWithFacebook extends ru.st.selenium.pages.TestBase {
   @Test
   public void testSignUpWithFacebook() throws Exception {
 
+	System.out.println("========================================");  
+	System.out.println("");    
 	System.out.println("========== SIGN UP WITH FACEBOOK ==========");  
 	driver.manage().window().maximize();
 	
@@ -117,7 +119,11 @@ public class SignUpWithFacebook extends ru.st.selenium.pages.TestBase {
 	removeUser("lyudmila_test_accountant@mail.ru");
     //logout
 	logout();
-	System.out.println("OK!");	
+	System.out.println("OK!");
+
+	System.out.println("===== SIGN UP CLIENT TEST WAS COMPLETED! ====="); 
+	System.out.println(""); 
+	System.out.println("========================================"); 	
   }
 
   private boolean isElementPresent(By by) {

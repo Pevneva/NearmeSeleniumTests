@@ -17,6 +17,8 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
   @Test
   public void testSignUp() throws Exception {
 
+	System.out.println("========================================");  
+	System.out.println("");  
 	System.out.println("========== SIGN UP STANDARD ==========");  
 	driver.manage().window().maximize();
 	
@@ -143,7 +145,11 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
     driver.get( "www.mail.ru");	
 	//log out from mail.ru
     driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();
-	System.out.println("OK!");	
+	System.out.println("OK!");
+
+	System.out.println("===== SIGN UP STANDARD TEST WAS COMPLETED! ====="); 
+	System.out.println(""); 
+	System.out.println("========================================"); 
   }
 
   private boolean isElementPresent(By by) {
