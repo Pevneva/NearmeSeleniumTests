@@ -33,7 +33,8 @@ public class SignUpClient extends ru.st.selenium.pages.TestBase {
 
 		System.out.println("========================================");  
 		System.out.println("");    
-		System.out.println("========== SIGN UP CLIENT ==========");  
+		System.out.println("============ SIGN UP CLIENT ============"); 
+		System.out.println(""); 		
 		driver.manage().window().maximize();
 		
 		//Removing user with 'lyudmila_test_03@mail.ru' email
@@ -100,10 +101,11 @@ public class SignUpClient extends ru.st.selenium.pages.TestBase {
 		System.out.println("Response:");
 		System.out.println(respBody);
 		checkResponse(respBody,"\"message\": \"Password successfully changed and sent to User's email\"");
-		
-		System.out.println("===== SIGN UP CLIENT TEST WAS COMPLETED! ====="); 
+
+		System.out.println(""); 		
+		System.out.println("======= SIGN UP CLIENT TEST WAS COMPLETED! ======="); 
 		System.out.println(""); 
-		System.out.println("========================================"); 
+		System.out.println("=================================================="); 
 		
 	}
    

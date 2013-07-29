@@ -17,7 +17,10 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
   @Test
   public void testOnlineRegistration() throws Exception {    
 
+  	System.out.println("=========================================");  
+	System.out.println("");  
 	System.out.println("========== ONLINE REGISTRATION ==========");
+	System.out.println("");	
 	driver.manage().window().maximize();
 
 	loginAsAdmin();
@@ -27,6 +30,11 @@ public class OnlineRegistration extends ru.st.selenium.pages.TestBase {
 
 	OnlineRegistr("Registration only","");
 	OnlineRegistr("Registration and 3 daily offers","PROMO-SALES-PLA");
+	
+	System.out.println(""); 
+	System.out.println("======= ONLINE REGISTRATION WAS COMPLETED! ======="); 
+	System.out.println(""); 
+	System.out.println("=================================================="); 	
 	
 	}
 	

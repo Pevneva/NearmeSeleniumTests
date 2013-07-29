@@ -17,7 +17,10 @@ public class OnlineRegistrationExistingUser extends ru.st.selenium.pages.TestBas
   @Test
   public void testOnlineRegistration() throws Exception {    
 
+  	System.out.println("==========================================================");  
+	System.out.println("");    
 	System.out.println("========== ONLINE REGISTRATION BY EXISTING USER ==========");
+	System.out.println(""); 	
 	driver.manage().window().maximize();
 
 	loginAsAdmin();
@@ -29,6 +32,11 @@ public class OnlineRegistrationExistingUser extends ru.st.selenium.pages.TestBas
 	OnlineRegistrWithUser("Registration only","",true);
 	login("Consumer","12345678");
 	OnlineRegistrWithUser("Registration and 3 daily offers","PROMO-SALES-PLA",false);
+	
+	System.out.println(""); 
+	System.out.println("===== ONLINE REGISTRATION BY EXISTING USER WAS COMPLETED! ====="); 
+	System.out.println(""); 
+	System.out.println("==============================================================="); 	
 	
 	}
 	

@@ -17,8 +17,11 @@ public class CreatingVenue extends ru.st.selenium.pages.TestBase {
   @Test
   public void testCreatingVenue() throws Exception {    
 	String TradName="";
-	
-	System.out.println("========== ADMIN CREATING VENUE ==========");	
+
+  	System.out.println("================================================");  
+	System.out.println("");		
+	System.out.println("============= ADMIN CREATING VENUE =============");	
+	System.out.println("");		
 	driver.manage().window().maximize();
 	loginAsAdmin();
 	
@@ -54,6 +57,11 @@ public class CreatingVenue extends ru.st.selenium.pages.TestBase {
 	removeUser("email_01@mail.ru");	
 	
 	logout();
+	
+	System.out.println(""); 
+	System.out.println("======= ADMIN CREATING VENUE WAS COMPLETED! ======="); 
+	System.out.println(""); 
+	System.out.println("===================================================");	
 	}
  
   private boolean isElementPresent(By by) {

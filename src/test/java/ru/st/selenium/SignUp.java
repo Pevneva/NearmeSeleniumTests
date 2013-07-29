@@ -19,7 +19,8 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
 
 	System.out.println("========================================");  
 	System.out.println("");  
-	System.out.println("========== SIGN UP STANDARD ==========");  
+	System.out.println("=========== SIGN UP STANDARD ===========");  
+	System.out.println("");  
 	driver.manage().window().maximize();
 	
 	loginAsAdmin();
@@ -146,10 +147,11 @@ public class SignUp extends ru.st.selenium.pages.TestBase {
 	//log out from mail.ru
     driver.findElement(By.xpath("//a[@id=\"PH_logoutLink\"]")).click();
 	System.out.println("OK!");
-
-	System.out.println("===== SIGN UP STANDARD TEST WAS COMPLETED! ====="); 
+	
+	System.out.println("");  
+	System.out.println("====== SIGN UP STANDARD TEST WAS COMPLETED! ======"); 
 	System.out.println(""); 
-	System.out.println("========================================"); 
+	System.out.println("=================================================="); 
   }
 
   private boolean isElementPresent(By by) {

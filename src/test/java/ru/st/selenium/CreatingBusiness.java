@@ -17,8 +17,11 @@ public class CreatingBusiness extends ru.st.selenium.pages.TestBase {
   @Test
   public void testCreatingBusiness() throws Exception {    
 	String TradName="Auto Admin Trading";
-	
-	System.out.println("========== ADMIN CREATING BUSINESS ==========");	
+
+  	System.out.println("===================================================");  
+	System.out.println("");	
+	System.out.println("============= ADMIN CREATING BUSINESS =============");
+	System.out.println("");	
 	driver.manage().window().maximize();
 	loginAsAdmin();
 	
@@ -38,6 +41,11 @@ public class CreatingBusiness extends ru.st.selenium.pages.TestBase {
 	removeUser("email_01@mail.ru");	
 	
 	logout();
+
+	System.out.println(""); 
+	System.out.println("======= ADMIN CREATING BUSINESS WAS COMPLETED! ======="); 
+	System.out.println(""); 
+	System.out.println("======================================================"); 	
 	
 	}
   

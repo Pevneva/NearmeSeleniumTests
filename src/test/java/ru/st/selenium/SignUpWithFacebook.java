@@ -17,9 +17,10 @@ public class SignUpWithFacebook extends ru.st.selenium.pages.TestBase {
   @Test
   public void testSignUpWithFacebook() throws Exception {
 
-	System.out.println("========================================");  
+	System.out.println("===========================================");  
 	System.out.println("");    
-	System.out.println("========== SIGN UP WITH FACEBOOK ==========");  
+	System.out.println("========== SIGN UP WITH FACEBOOK =========="); 
+	System.out.println(""); 	
 	driver.manage().window().maximize();
 	
 	loginAsAdmin();
@@ -121,9 +122,10 @@ public class SignUpWithFacebook extends ru.st.selenium.pages.TestBase {
 	logout();
 	System.out.println("OK!");
 
-	System.out.println("===== SIGN UP CLIENT TEST WAS COMPLETED! ====="); 
 	System.out.println(""); 
-	System.out.println("========================================"); 	
+	System.out.println("======= SIGN UP CLIENT TEST WAS COMPLETED! ======="); 
+	System.out.println(""); 
+	System.out.println("=================================================="); 	
   }
 
   private boolean isElementPresent(By by) {
