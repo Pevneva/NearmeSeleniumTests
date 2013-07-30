@@ -318,7 +318,7 @@ public void approveBusiness(String TradingName) throws Exception{
 	System.out.println("Approving new business...");	
 	//going to Businesses tab
     driver.findElement(By.cssSelector("#registrationsTab > span.nav_btn_text")).click();
-    //entering 'Auto Online Trading' text to 'Keywords' field
+    //entering <Trading Name> text to 'Keywords' field
 	driver.findElement(By.id("keywords")).clear();
     driver.findElement(By.id("keywords")).sendKeys(TradingName);
 	//clicking on Search icon
@@ -806,6 +806,69 @@ public void finalRegistrationStepOfOnlineRegistration() throws Exception {
 	logout();
 	System.out.println("OK!");
 }
+
+ public void updateOfferPlanForBusiness(String TradingName) throws Exception {
+
+	//opening Business List page
+	System.out.println("Opening Business List page...");
+    driver.findElement(By.cssSelector("#registrationsTab > span.nav_btn_text")).click();
+	System.out.println("OK!");
+	//entering <Trading Name> text to 'Keywords' field
+	driver.findElement(By.id("keywords")).clear();
+    driver.findElement(By.id("keywords")).sendKeys(TradingName);
+	//clicking on Search icon
+    driver.findElement(By.id("action_button")).click();
+	//clicking on 'select_all' checkbox
+    driver.findElement(By.name("selectAll")).click();
+ 
+	//selecting 'Unlimited Offers' value in 'Offer Plan' select box
+	System.out.println("selecting 'Unlimited Offers' value in 'Offer Plan' select box...");
+    new Select(driver.findElement(By.id("offerPlan"))).selectByVisibleText("Unlimited Offers");
+	System.out.println("OK!");
+	//clicking on the "Update" button
+	System.out.println("clicking on the 'Update' button...");	
+    driver.findElement(By.name("_action_updateContract")).click();
+	System.out.println("OK!");
+	//checking that Business List page is opened	
+	System.out.println("checking that Business List is opened...");
+	for (int second = 0;; second++) {
+				if (second >= 60) fail("timeout");
+				try { if (isElementPresent(By.xpath("//div[@class=\"bottom_row\"]"))) break; } catch (Exception e) {}
+				Thread.sleep(1000);
+	System.out.println("OK!");
+	}
+}
+
+public void addOffer(String FromDate, String ToDate) throws Exception {
+
+//	adding offer
+	System.out.println("adding offer...");
+    driver.findElement(By.id("title")).clear();
+    driver.findElement(By.id("title")).sendKeys("Offer test");
+    driver.findElement(By.id("details")).clear();
+    driver.findElement(By.id("details")).sendKeys("sub title for offer");
+	
+	driver.findElement(By.id("launchDate")).sendKeys(FromDate);
+	driver.findElement(By.id("expiryDate")).sendKeys(ToDate);	
+	
+    driver.findElement(By.id("allWeekOffer")).click();
+    driver.findElement(By.id("weekdaysOffer")).click();
+    driver.findElement(By.id("weekendsOffer")).click();
+    driver.findElement(By.name("offerCode.code")).clear();
+    driver.findElement(By.name("offerCode.code")).sendKeys("COUPON");
+    driver.findElement(By.name("offerCode.quantity")).clear();
+    driver.findElement(By.name("offerCode.quantity")).sendKeys("9999");
+    driver.findElement(By.name("_action_save")).click();
+	
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.xpath("//div[@class=\"green_block\"]"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }	
+	
+	System.out.println("OK!");
+}
+ 
 
 public void logoutFromMailru() throws Exception{
 	/* Log out from email */

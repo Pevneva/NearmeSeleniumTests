@@ -10,7 +10,8 @@
 		    <class name="ru.st.selenium.OnlineRegistration"/>
 		    <class name="ru.st.selenium.OnlineRegistrationExistingUser"/>
 		    <class name="ru.st.selenium.CreatingBusiness"/>			
-		    <class name="ru.st.selenium.CreatingVenue"/>			
+		    <class name="ru.st.selenium.CreatingVenue"/>
+		    <class name="ru.st.selenium.CreatingOfferForSmbBusiness"/>				
 		</classes>
 	</test>  
 </suite>
