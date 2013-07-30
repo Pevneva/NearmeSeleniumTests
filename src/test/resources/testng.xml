@@ -12,7 +12,8 @@
 		    <class name="ru.st.selenium.CreatingBusiness"/>			
 		    <class name="ru.st.selenium.CreatingVenue"/>
 		    <class name="ru.st.selenium.CreatingOfferForSmbBusiness"/>	
-		    <class name="ru.st.selenium.CreatingOfferForChainBusiness"/>			
+		    <class name="ru.st.selenium.CreatingOfferForChainBusiness"/>
+		    <class name="ru.st.selenium.CreatingOfferForMallBusiness"/>				
 		</classes>
 	</test>  
 </suite>
