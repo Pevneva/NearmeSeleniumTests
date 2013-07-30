@@ -11,7 +11,8 @@
 		    <class name="ru.st.selenium.OnlineRegistrationExistingUser"/>
 		    <class name="ru.st.selenium.CreatingBusiness"/>			
 		    <class name="ru.st.selenium.CreatingVenue"/>
-		    <class name="ru.st.selenium.CreatingOfferForSmbBusiness"/>				
+		    <class name="ru.st.selenium.CreatingOfferForSmbBusiness"/>	
+		    <class name="ru.st.selenium.CreatingOfferForChainBusiness"/>			
 		</classes>
 	</test>  
 </suite>

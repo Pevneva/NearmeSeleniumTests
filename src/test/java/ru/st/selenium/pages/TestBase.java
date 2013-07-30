@@ -869,6 +869,68 @@ public void addOffer(String FromDate, String ToDate) throws Exception {
 	System.out.println("OK!");
 }
  
+public void addChainOffer(String FromDate, String ToDate, Boolean isUnique, String OfferType, 
+							Boolean isRedeemable, String CodeType, String CodeFormat) throws Exception {
+
+//	adding offer
+	System.out.println("adding offer...");
+    driver.findElement(By.id("title")).clear();
+    driver.findElement(By.id("title")).sendKeys("Offer test");
+    driver.findElement(By.id("details")).clear();
+    driver.findElement(By.id("details")).sendKeys("sub title for offer");
+	
+	driver.findElement(By.id("launchDate")).sendKeys(FromDate);
+	driver.findElement(By.id("expiryDate")).sendKeys(ToDate);	
+	
+    driver.findElement(By.id("allWeekOffer")).click();
+    driver.findElement(By.id("weekdaysOffer")).click();
+    driver.findElement(By.id("weekendsOffer")).click();
+	
+	if (isUnique) driver.findElement(By.id("singleCoupon")).click();
+	
+    new Select(driver.findElement(By.id("type"))).selectByVisibleText(OfferType);	
+	
+	if (OfferType.equals("Online") || OfferType.equals("Anywhere")) driver.findElement(By.id("onlineUrl")).sendKeys("http://www.some_url.com");
+	
+	if (isRedeemable) {
+		new Select(driver.findElement(By.id("offerCode.renderingFormat"))).selectByVisibleText(CodeType);
+ 		for (int second = 0;; second++) {
+			if (second >= 60) fail("timeout");
+			try { if (isElementPresent(By.xpath("//div[@class=\"code\"]"))) break; } catch (Exception e) {}
+			Thread.sleep(1000);
+		}	
+		new Select(driver.findElement(By.id("offerCode.type"))).selectByVisibleText(CodeFormat);
+		if (CodeFormat.equals("Custom")){
+			for (int second = 0;; second++) {
+				if (second >= 60) fail("timeout");
+				try { if (isElementPresent(By.xpath("//div[@id=\"codeRepresentation\"]"))) break; } catch (Exception e) {}
+				Thread.sleep(1000);
+			}		
+			driver.findElement(By.name("offerCode.code")).sendKeys("CODE_TEST_01");
+			driver.findElement(By.name("offerCode.quantity")).sendKeys("5000");
+			driver.findElement(By.name("offerCode.control")).sendKeys("CUSTOM_CODE_01");
+		}
+		if (CodeFormat.equals("Static")){
+			for (int second = 0;; second++) {
+				if (second >= 60) fail("timeout");
+				try { if (isElementPresent(By.xpath("//div[@id=\"codeRepresentation\"]"))) break; } catch (Exception e) {}
+				Thread.sleep(1000);
+			}		
+			driver.findElement(By.name("offerCode.code")).sendKeys("CODE_TEST_01");
+			driver.findElement(By.name("offerCode.quantity")).sendKeys("5000");
+		}	
+	}
+	else driver.findElement(By.id("useRedeemableCode")).click();
+
+    driver.findElement(By.name("_action_save")).click();
+	
+    for (int second = 0;; second++) {
+    	if (second >= 60) fail("timeout");
+    	try { if (isElementPresent(By.xpath("//div[@class=\"green_block\"]"))) break; } catch (Exception e) {}
+    	Thread.sleep(1000);
+    }	
+	System.out.println("OK!");
+} 
 
 public void logoutFromMailru() throws Exception{
 	/* Log out from email */
