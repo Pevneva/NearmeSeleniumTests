@@ -123,7 +123,7 @@ public class SignUpWithFacebook extends ru.st.selenium.pages.TestBase {
 	System.out.println("OK!");
 
 	System.out.println(""); 
-	System.out.println("======= SIGN UP CLIENT TEST WAS COMPLETED! ======="); 
+	System.out.println("====== SIGN UP WITH FACEBOOK WAS COMPLETED! ======"); 
 	System.out.println(""); 
 	System.out.println("=================================================="); 	
   }
