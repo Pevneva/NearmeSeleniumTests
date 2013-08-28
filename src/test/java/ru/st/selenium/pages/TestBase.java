@@ -785,7 +785,8 @@ public void finalRegistrationStepOfOnlineRegistration() throws Exception {
     driver.findElement(By.id("holiday.1.name")).clear();
     driver.findElement(By.id("holiday.1.name")).sendKeys("Holiday2");
 	System.out.println("OK!");	
-
+	//clicking on the "Finish" button
+    driver.findElement(By.name("_action_save")).click();
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//h3[@class=\"info_details__title\"]"))) break; } catch (Exception e) {}
