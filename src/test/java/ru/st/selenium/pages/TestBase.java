@@ -749,8 +749,10 @@ public void finalRegistrationStepOfOnlineRegistration() throws Exception {
 	//adding Timetable2
     driver.findElement(By.id("add_period_item")).click();
 	//filling 'From' input field for Timetable1
+    driver.findElement(By.id("0.periodFrom")).clear();;
     driver.findElement(By.id("0.periodFrom")).sendKeys("09/06/13");
 	//filling 'To' input field for Timetable2
+    driver.findElement(By.id("0.periodTo")).clear();;
     driver.findElement(By.id("0.periodTo")).sendKeys("15/06/13");
 	//selecting '10:00' in 'Open' select box for Monday in first case
     new Select(driver.findElement(By.id("openingHours.main.1.Monday.from_hour"))).selectByVisibleText("10:00");
@@ -773,23 +775,17 @@ public void finalRegistrationStepOfOnlineRegistration() throws Exception {
     driver.findElement(By.id("holiday.0.name")).sendKeys("Holiday1");		
 	//clicking on the 'Add another holiday period' link
     driver.findElement(By.id("add_holiday_item")).click();
-	//filling 'From' input field for Holiday1
+	//filling 'From' input field for Holiday2
+    driver.findElement(By.id("holiday.1.periodFrom")).clear();
     driver.findElement(By.id("holiday.1.periodFrom")).sendKeys("20/06/13");
-	//filling 'To' input field for Holiday1
+	//filling 'To' input field for Holiday2
+    driver.findElement(By.id("holiday.1.periodTo")).clear();	
     driver.findElement(By.id("holiday.1.periodTo")).sendKeys("30/06/13");	
 	//entering Holiday name
+    driver.findElement(By.id("holiday.1.name")).clear();
     driver.findElement(By.id("holiday.1.name")).sendKeys("Holiday2");
 	System.out.println("OK!");	
 
-	/* Adding Additional Info */
-	
-	//selecting 'Sky Sports' value
-    new Select(driver.findElement(By.id("infos.type.0"))).selectByVisibleText("Sky Sports");	
-	//clicking on the 'Add additional info' link
-    driver.findElement(By.id("add_info")).click();
-	//clicking on the "Finish" button
-    driver.findElement(By.name("_action_save")).click();	
-	//checking that merchant page will be opened
     for (int second = 0;; second++) {
     	if (second >= 60) fail("timeout");
     	try { if (isElementPresent(By.xpath("//h3[@class=\"info_details__title\"]"))) break; } catch (Exception e) {}
