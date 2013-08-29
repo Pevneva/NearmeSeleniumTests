@@ -472,16 +472,6 @@ public void addVenue() throws Exception{
     driver.findElement(By.id("holiday.1.name")).sendKeys("Holiday2");
 	System.out.println("OK!");	
 
-	/* Adding Additional Info */
-	
-	//selecting 'Play Area' value
-	System.out.println("Selecting 'Play Area' value...");
-    new Select(driver.findElement(By.id("infos.type.0"))).selectByVisibleText("Play Area");	
-	System.out.println("OK!");
-	//clicking on the 'Add additional info' link
-	System.out.println("Clicking on the 'Add additional info' link...");	 
-	driver.findElement(By.id("add_info")).click();
-	System.out.println("OK!");
 	//clicking on the "Finish" button
 	System.out.println("Clickingon the \"Finish\" button...");	
     driver.findElement(By.name("_action_save")).click();
