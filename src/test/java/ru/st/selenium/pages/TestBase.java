@@ -299,8 +299,6 @@ public class TestBase {
 	//entering Keyword
     driver.findElement(By.id("keywords.ti1")).clear();
     driver.findElement(By.id("keywords.ti1")).sendKeys("Key Word");
-	//selecting 'Yes' value for 'Show the Additional Info Page in the App' select box
-    new Select(driver.findElement(By.id("isAdditionalInfoForClientEnabled"))).selectByVisibleText("Yes");
 	//press on the "Continue" button
     driver.findElement(By.name("_action_saveAndReview")).click();
 	//checking that 'Business Added' text is shown
